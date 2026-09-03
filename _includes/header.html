@@ -1,6 +1,5 @@
-<!-- ESTILOS CSS COM SUPORTE A MODO ESCURO E TELA AMPLA -->
+<!-- ESTILOS CSS COM SUPORTE A MODO ESCURO, TELA AMPLA E ANIMAÇÕES -->
 <style>
-  /* 1. CORES DO MODO CLARO (PADRÃO) */
   :root {
     --bg-color: #ffffff;
     --text-color: #111111;
@@ -10,7 +9,6 @@
     --nav-link-color: #555555;
   }
 
-  /* 2. CORES DO MODO ESCURO (ATIVADO VIA JAVASCRIPT) */
   [data-theme="dark"] {
     --bg-color: #121212;
     --text-color: #e0e0e0;
@@ -20,22 +18,19 @@
     --nav-link-color: #aaaaaa;
   }
 
-  /* APLICANDO AS CORES DINÂMICAS AO CORPO DO SITE */
   body {
     background-color: var(--bg-color) !important;
     color: var(--text-color) !important;
-    padding-top: 80px !important; /* Empurra o conteúdo para baixo do menu fixo */
+    padding-top: 80px !important;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* APROVEITAR TODA A TELA (95% DE LARGURA) */
   .wrapper {
     max-width: 95% !important;
     padding-left: 30px !important;
     padding-right: 30px !important;
   }
 
-  /* CABEÇALHO FIXO COM CORES DINÂMICAS */
   .site-header {
     position: fixed !important;
     top: 0;
@@ -47,7 +42,6 @@
     transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
-  /* CONFIGURAÇÃO DOS LINKS E TÍTULOS */
   .site-title, .site-title:visited {
     color: var(--link-color) !important;
   }
@@ -60,7 +54,6 @@
     color: var(--link-color) !important;
   }
 
-  /* CONFIGURAÇÃO DA LOGO DA UTFPR */
   .header-logo {
     height: 40px !important;
     width: auto !important;
@@ -69,7 +62,6 @@
     margin-top: -5px;
   }
 
-  /* ESTILO DO BOTÃO DE ALTERNAR TEMA */
   .theme-toggle-btn {
     background: none;
     border: none;
@@ -86,16 +78,15 @@
 </style>
 
 <header class="site-header" role="banner">
-  <!-- Flexbox garante que a logo fique na esquerda e o menu + botão na direita -->
   <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center; height: 56px;">
     
-    <!-- TÍTULO DO SITE COM A LOGO DA UTFPR (logo_utfpr.png) -->
+    <!-- TÍTULO COM A LOGO DA UTFPR -->
     <a class="site-title" rel="author" href="{{ '/' | relative_url }}">
       <img src="{{ '/assets/images/logo_utfpr.png' | relative_url }}" alt="Logo UTFPR" class="header-logo">
       {{ site.title | escape }}
     </a>
 
-    <!-- MENU DE NAVEGAÇÃO E BOTÃO LADO A LADO -->
+    <!-- NAVEGAÇÃO E BOTÃO DE TEMA -->
     <div style="display: flex; align-items: center;">
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -111,10 +102,11 @@
           <a class="page-link" href="{{ '/' | relative_url }}">Início</a>
           <a class="page-link" href="{{ '/problema/' | relative_url }}">O Problema</a>
           <a class="page-link" href="{{ '/sobre/' | relative_url }}">Sobre o Projeto</a>
+          <a class="page-link" href="{{ '/referencias/' | relative_url }}">Referências</a>
         </div>
       </nav>
 
-      <!-- BOTÃO DE MODO ESCURO -->
+      <!-- BOTÃO DE ALTERNAR TEMA -->
       <button id="theme-toggle" class="theme-toggle-btn" title="Alternar Modo Escuro">
         🌙
       </button>
@@ -123,27 +115,39 @@
   </div>
 </header>
 
-<!-- JAVASCRIPT PARA GRAVAR A PREFERÊNCIA DO USUÁRIO -->
+<!-- JAVASCRIPT: DETECÇÃO AUTOMÁTICA DO SISTEMA + PERSISTÊNCIA -->
 <script>
   const toggleButton = document.getElementById('theme-toggle');
   const htmlElement = document.documentElement;
 
-  // 1. Ao carregar a página, verifica se há preferência salva no computador do usuário
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  htmlElement.setAttribute('data-theme', savedTheme);
-  updateToggleIcon(savedTheme);
+  // 1. Decisão do Tema Inicial
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  let initialTheme = 'light'; // Fallback padrão
+  
+  if (savedTheme) {
+    // Se o usuário já escolheu manualmente no passado, respeita a escolha
+    initialTheme = savedTheme;
+  } else if (systemPrefersDark) {
+    // Se não há histórico, mas o sistema/navegador está em modo escuro, ativa o modo escuro
+    initialTheme = 'dark';
+  }
 
-  // 2. Escuta o clique do botão para alternar o tema
+  // Aplica o tema decidido
+  htmlElement.setAttribute('data-theme', initialTheme);
+  updateToggleIcon(initialTheme);
+
+  // 2. Evento de clique para troca manual
   toggleButton.addEventListener('click', () => {
     const currentTheme = htmlElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
     htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); // Salva no navegador para persistir
+    localStorage.setItem('theme', newTheme); // Grava a escolha para as próximas páginas
     updateToggleIcon(newTheme);
   });
 
-  // 3. Atualiza o ícone (Sol no modo escuro, Lua no modo claro)
   function updateToggleIcon(theme) {
     if (theme === 'dark') {
       toggleButton.textContent = '☀️';
