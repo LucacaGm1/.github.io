@@ -1,7 +1,42 @@
+<!-- ESTILOS CSS FORÇADOS (TELA CHEIA, CABEÇALHO FIXO E LOGO) -->
+<style>
+  /* 1. FAZER O SITE APROVEITAR TODA A TELA (LARGURA TOTAL) */
+  .wrapper {
+    max-width: 95% !important; /* Ocupa 95% da largura da tela */
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+
+  /* 2. DEIXAR O CABEÇALHO (MENU) TOTALMENTE FIXO NO TOPO */
+  .site-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: #ffffff !important; /* Garante fundo branco para não misturar com o texto */
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  /* 3. COMPENSAR O ESPAÇO DO CABEÇALHO FIXO */
+  body {
+    padding-top: 80px !important; /* Empurra o conteúdo do site para baixo para não sumir atrás do menu */
+  }
+
+  /* 4. AJUSTAR O TAMANHO E POSIÇÃO DA LOGO DA UTFPR */
+  .header-logo {
+    height: 40px !important; /* Ajusta a altura da logo para caber perfeitamente no menu */
+    width: auto !important;
+    vertical-align: middle;
+    margin-right: 12px;
+    margin-top: -5px;
+  }
+</style>
+
 <header class="site-header" role="banner">
   <div class="wrapper">
     
-    <!-- TÍTULO DO SITE COM A LOGO DA UTFPR -->
+    <!-- TÍTULO DO SITE COM A LOGO DA UTFPR (logo_utfpr.png) -->
     <a class="site-title" rel="author" href="{{ '/' | relative_url }}">
       <img src="{{ '/assets/images/logo_utfpr.png' | relative_url }}" alt="Logo UTFPR" class="header-logo">
       {{ site.title | escape }}
