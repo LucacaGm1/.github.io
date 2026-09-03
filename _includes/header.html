@@ -1,40 +1,93 @@
-<!-- ESTILOS CSS FORÇADOS (TELA CHEIA, CABEÇALHO FIXO E LOGO) -->
+<!-- ESTILOS CSS COM SUPORTE A MODO ESCURO E TELA AMPLA -->
 <style>
-  /* 1. FAZER O SITE APROVEITAR TODA A TELA (LARGURA TOTAL) */
+  /* 1. CORES DO MODO CLARO (PADRÃO) */
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --header-bg: #ffffff;
+    --border-color: #e8e8e8;
+    --link-color: #111111;
+    --nav-link-color: #555555;
+  }
+
+  /* 2. CORES DO MODO ESCURO (ATIVADO VIA JAVASCRIPT) */
+  [data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --header-bg: #1a1a1a;
+    --border-color: #2d2d2d;
+    --link-color: #ffffff;
+    --nav-link-color: #aaaaaa;
+  }
+
+  /* APLICANDO AS CORES DINÂMICAS AO CORPO DO SITE */
+  body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    padding-top: 80px !important; /* Empurra o conteúdo para baixo do menu fixo */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* APROVEITAR TODA A TELA (95% DE LARGURA) */
   .wrapper {
-    max-width: 95% !important; /* Ocupa 95% da largura da tela */
+    max-width: 95% !important;
     padding-left: 30px !important;
     padding-right: 30px !important;
   }
 
-  /* 2. DEIXAR O CABEÇALHO (MENU) TOTALMENTE FIXO NO TOPO */
+  /* CABEÇALHO FIXO COM CORES DINÂMICAS */
   .site-header {
     position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
-    background-color: #ffffff !important; /* Garante fundo branco para não misturar com o texto */
-    border-bottom: 1px solid #e8e8e8;
+    background-color: var(--header-bg) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
   }
 
-  /* 3. COMPENSAR O ESPAÇO DO CABEÇALHO FIXO */
-  body {
-    padding-top: 80px !important; /* Empurra o conteúdo do site para baixo para não sumir atrás do menu */
+  /* CONFIGURAÇÃO DOS LINKS E TÍTULOS */
+  .site-title, .site-title:visited {
+    color: var(--link-color) !important;
+  }
+  
+  .site-nav .page-link {
+    color: var(--nav-link-color) !important;
   }
 
-  /* 4. AJUSTAR O TAMANHO E POSIÇÃO DA LOGO DA UTFPR */
+  .site-nav .page-link:hover {
+    color: var(--link-color) !important;
+  }
+
+  /* CONFIGURAÇÃO DA LOGO DA UTFPR */
   .header-logo {
-    height: 40px !important; /* Ajusta a altura da logo para caber perfeitamente no menu */
+    height: 40px !important;
     width: auto !important;
     vertical-align: middle;
     margin-right: 12px;
     margin-top: -5px;
   }
+
+  /* ESTILO DO BOTÃO DE ALTERNAR TEMA */
+  .theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 15px;
+    font-size: 18px;
+    color: var(--text-color);
+    transition: transform 0.2s ease;
+  }
+  .theme-toggle-btn:hover {
+    transform: scale(1.15);
+  }
 </style>
 
 <header class="site-header" role="banner">
-  <div class="wrapper">
+  <!-- Flexbox garante que a logo fique na esquerda e o menu + botão na direita -->
+  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center; height: 56px;">
     
     <!-- TÍTULO DO SITE COM A LOGO DA UTFPR (logo_utfpr.png) -->
     <a class="site-title" rel="author" href="{{ '/' | relative_url }}">
@@ -42,23 +95,60 @@
       {{ site.title | escape }}
     </a>
 
-    <!-- MENU DE NAVEGAÇÃO SUPERIOR -->
-    <nav class="site-nav">
-      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-      <label for="nav-trigger">
-        <span class="menu-icon">
-          <svg viewBox="0 0 18 15" width="18px" height="15px">
-            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-          </svg>
-        </span>
-      </label>
+    <!-- MENU DE NAVEGAÇÃO E BOTÃO LADO A LADO -->
+    <div style="display: flex; align-items: center;">
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
 
-      <div class="trigger">
-        <a class="page-link" href="{{ '/' | relative_url }}">Início</a>
-        <a class="page-link" href="{{ '/problema/' | relative_url }}">O Problema</a>
-        <a class="page-link" href="{{ '/sobre/' | relative_url }}">Sobre o Projeto</a>
-      </div>
-    </nav>
+        <div class="trigger">
+          <a class="page-link" href="{{ '/' | relative_url }}">Início</a>
+          <a class="page-link" href="{{ '/problema/' | relative_url }}">O Problema</a>
+          <a class="page-link" href="{{ '/sobre/' | relative_url }}">Sobre o Projeto</a>
+        </div>
+      </nav>
+
+      <!-- BOTÃO DE MODO ESCURO -->
+      <button id="theme-toggle" class="theme-toggle-btn" title="Alternar Modo Escuro">
+        🌙
+      </button>
+    </div>
     
   </div>
 </header>
+
+<!-- JAVASCRIPT PARA GRAVAR A PREFERÊNCIA DO USUÁRIO -->
+<script>
+  const toggleButton = document.getElementById('theme-toggle');
+  const htmlElement = document.documentElement;
+
+  // 1. Ao carregar a página, verifica se há preferência salva no computador do usuário
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  htmlElement.setAttribute('data-theme', savedTheme);
+  updateToggleIcon(savedTheme);
+
+  // 2. Escuta o clique do botão para alternar o tema
+  toggleButton.addEventListener('click', () => {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme); // Salva no navegador para persistir
+    updateToggleIcon(newTheme);
+  });
+
+  // 3. Atualiza o ícone (Sol no modo escuro, Lua no modo claro)
+  function updateToggleIcon(theme) {
+    if (theme === 'dark') {
+      toggleButton.textContent = '☀️';
+    } else {
+      toggleButton.textContent = '🌙';
+    }
+  }
+</script>
