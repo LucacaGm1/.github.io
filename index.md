@@ -4,8 +4,6 @@ title: "Início: Soluções de Baixo Custo"
 permalink: /
 ---
 
-<img src="{{ site.baseurl }}/assets/images/logo_utfpr.png" alt="Logo UTFPR" width="180" style="margin-bottom: 20px;">
-
 A garantia do sigilo e da transparência é um pilar fundamental da democracia eletrônica contemporânea [1]. No entanto, abordagens tradicionais para mitigar ataques eletromagnéticos consistem na aplicação de blindagem física de hardware, uma alternativa cara e de difícil implementação na escala do sistema eleitoral brasileiro [2, 3].
 
 Este projeto de extensão explora uma solução inovadora, econômica e de fácil adoção para a infraestrutura pública [2, 4].
