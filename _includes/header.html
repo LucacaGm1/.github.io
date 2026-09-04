@@ -1,10 +1,10 @@
 <header class="site-header" role="banner">
-  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center; min-height: 68px;">
+  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center; min-height: 64px;">
     
-    <!-- Identidade Visual Institucional -->
+    <!-- Logo e Identificação Institucional -->
     <a class="site-title" rel="author" href="{{ '/' | relative_url }}">
       <img src="{{ '/assets/images/logo_utfpr.png' | relative_url }}" alt="UTFPR" class="header-logo">
-      <span>Canais Laterais &bull; UTFPR</span>
+      <span style="font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em;">Canais Laterais &bull; UTFPR</span>
     </a>
 
     <!-- Navegação e Alternador de Tema -->
@@ -13,7 +13,7 @@
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px" style="fill: var(--text-primary);">
+            <svg viewBox="0 0 18 15" width="18px" height="15px" style="fill: var(--text-main);">
               <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
             </svg>
           </span>
@@ -23,18 +23,26 @@
           <a class="page-link" href="{{ '/' | relative_url }}">Início</a>
           <a class="page-link" href="{{ '/problema/' | relative_url }}">O Problema</a>
           <a class="page-link" href="{{ '/sdr/' | relative_url }}">Rádios SDR</a>
-          <a class="page-link" href="{{ '/sobre/' | relative_url }}">Sobre o Projeto</a>
+          <a class="page-link" href="{{ '/sobre/' | relative_url }}">Sobre a Pesquisa</a>
           <a class="page-link" href="{{ '/referencias/' | relative_url }}">Referências</a>
         </div>
       </nav>
 
-      <!-- Botão de Alternância de Tema com Ícones SVG -->
-      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar modo claro e escuro" title="Alternar tema">
-        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none; width: 18px; height: 18px;">
-          <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+      <!-- Alternador de Tema Mínimo -->
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Alternar tema claro e escuro" title="Alternar tema">
+        <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none; width: 15px; height: 15px;">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
         </svg>
-        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none; width: 18px; height: 18px;">
-          <path d="M12.3 2a10 10 0 0 0-1.9 19.8 10 10 0 0 0 11.5-11.5A10 10 0 0 0 12.3 2zm-1.1 17.8a8 8 0 1 1 8.6-8.6 8 8 0 0 1-8.6 8.6z"/>
+        <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none; width: 15px; height: 15px;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
     </div>
@@ -73,11 +81,11 @@
       if (theme === 'dark') {
         sunIcon.style.display = 'block';
         moonIcon.style.display = 'none';
-        toggleButton.setAttribute('title', 'Mudar para modo claro');
+        toggleButton.setAttribute('title', 'Mudar para tema claro');
       } else {
         sunIcon.style.display = 'none';
         moonIcon.style.display = 'block';
-        toggleButton.setAttribute('title', 'Mudar para modo escuro');
+        toggleButton.setAttribute('title', 'Mudar para tema escuro');
       }
     }
   })();

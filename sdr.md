@@ -4,96 +4,101 @@ title: "Dispositivos de Captura: Rádios SDR"
 permalink: /sdr/
 ---
 
-<div class="hero-banner">
-  <div class="badge-tag">Engenharia de Rádio e Hardware</div>
-  <h2 style="margin-top: 0; margin-bottom: 12px; font-size: 1.65rem;">O Papel dos Rádios Definidos por Software (SDR)</h2>
-  <p style="margin-bottom: 0; font-size: 1.05rem; line-height: 1.7;">
-    Diferentemente de receptores de radiodifusão comerciais analógicos com circuitos dedicados a áudio, os <strong>Rádios Definidos por Software (SDR)</strong> utilizam componentes reconfiguráveis e processamento digital de sinais para sintonizar amplas faixas do espectro eletromagnético <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>. Na pesquisa de canais laterais (TEMPEST), o SDR funciona como a ponte de captura das emissões involuntárias de vídeo da urna <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+<div class="paper-masthead">
+  <div class="paper-context">Engenharia de Rádio // Equipamentos e Demodulação</div>
+  <h1 class="paper-title">Arquitetura dos Receptores de Rádio Definido por Software (SDR)</h1>
+  <div class="paper-meta">
+    Investigação dos dispositivos de recepção de RF e ferramentas computacionais aplicadas à espionagem de sinais de vídeo <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+  </div>
+</div>
+
+<h2 style="font-size: 1.45rem; margin-top: 30px; margin-bottom: 16px;">
+  <span class="section-num">§ 1.</span> O Papel do SDR na Cadeia de Interceptação
+</h2>
+
+<p>
+  Em contraste com receptores de rádio convencionais que possuem circuitos integrados rígidos projetados exclusivamente para áudio analógico, os <strong>Rádios Definidos por Software (SDR)</strong> utilizam conversores analógico-digitais (ADC) de alta velocidade acoplados a matrizes de portas lógicas programáveis (FPGA) e barramentos de dados rápidos. O processamento de sinal &mdash; filtragem de canal, sincronismo de quadros e demodulação &mdash; é inteiramente delegado a software executado em tempo real ou processado offline <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+</p>
+
+<p>
+  Nos ensaios realizados pela equipe da UTFPR, as ferramentas open-source baseadas no ecossistema <strong>GNU Radio</strong> e no módulo <code>gr-tempest</code> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a> viabilizam a detecção cega das frequências de clock e taxa de quadros <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>, reconstruindo a matriz de pixels a partir de amostras de radiofrequência brutas (I/Q).
+</p>
+
+<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
+  <span class="section-num">§ 2.</span> Análise das Arquiteturas Estudadas
+</h2>
+
+<div class="tech-block">
+  <div class="tech-block-title">Plataforma Autônoma Portátil // Classe de Risco Furtivo</div>
+  <h4>Ettus USRP E312 / Série USRP E3xx</h4>
+  <p style="font-size: 0.95rem; margin-bottom: 8px;">
+    Esta família de SDRs representa o vetor mais crítico para o Cenário 2 (agente interno) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>. O dispositivo integra um circuito System-on-Chip (SoC) com núcleos de processamento ARM rodando Linux embarcado, dispensando computador externo.
+  </p>
+  <p style="font-size: 0.95rem; margin-bottom: 0;">
+    Alimentado por bateria interna de íons de lítio e pesando menos de 500 gramas em chassi metálico selado sem telas ou botões, pode ser facilmente transportado no bolso ou mochila por mesários e fiscais, gravando o espectro de radiofrequência silenciosamente durante o horário de votação para posterior extração dos votos digitados.
   </p>
 </div>
 
-<div class="grid-2" style="align-items: start;">
-  
-  <div>
-    <h3 style="margin-bottom: 16px;">Arquiteturas Estudadas na Pesquisa</h3>
-
-    <div class="clean-card">
-      <div class="badge-tag" style="color: #b91c1c; background: #fee2e2; border-color: #fca5a5;">Ameaça Crítica &bull; Autônomo</div>
-      <h4>Ettus USRP E312 / Série E3xx</h4>
-      <p style="font-size: 0.95rem;">
-        Representa a classe de maior risco operacional para a fiscalização em seções eleitorais <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>:
-      </p>
-      <ul style="font-size: 0.92rem; color: var(--text-secondary); padding-left: 20px;">
-        <li style="margin-bottom: 6px;"><strong>Operação Independente:</strong> Equipado com processador ARM embarcado rodando Linux e alimentado por bateria interna, dispensando tomadas elétricas.</li>
-        <li style="margin-bottom: 6px;"><strong>Gravação Local:</strong> Pode armazenar amostras brutas de RF (I/Q) diretamente em memória flash para decodificação posterior fora da seção.</li>
-        <li><strong>Fator de Forma Discreto:</strong> Chassi metálico compacto sem botões ou telas, facilmente ocultável em bolsas, mochilas ou vestimentas de mesários e fiscais.</li>
-      </ul>
-    </div>
-
-    <div class="clean-card">
-      <div class="badge-tag">Laboratório &bull; Bancada</div>
-      <h4>Ettus USRP B200</h4>
-      <p style="font-size: 0.95rem;">
-        Modelo de referência amplamente adotado nos experimentos de bancada do laboratório da UTFPR <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>:
-      </p>
-      <ul style="font-size: 0.92rem; color: var(--text-secondary); padding-left: 20px;">
-        <li style="margin-bottom: 6px;"><strong>Conexão via Host:</strong> Exige conexão constante via barramento USB 3.0 de alta velocidade a um computador com processador robusto para streaming de dados em tempo real.</li>
-        <li style="margin-bottom: 6px;"><strong>Recepção de RF:</strong> Acoplado a antenas direcionais ou dipolos comuns, sintonizado nas harmônicas de radiação dos sinais de vídeo <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a>.</li>
-        <li><strong>Emprego Operacional:</strong> Típico para ataques estáticos montados previamente em veículos próximos ou salas contíguas <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div>
-    <h3 style="margin-bottom: 16px;">Comparativo de Características Técnicas</h3>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Especificação</th>
-          <th>USRP E312 (Portátil)</th>
-          <th>USRP B200 (Bancada)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Alimentação</strong></td>
-          <td>Bateria interna integrada</td>
-          <td>Barramento USB 3.0 / Fonte externa</td>
-        </tr>
-        <tr>
-          <td><strong>Processamento</strong></td>
-          <td>SoC ARM + FPGA embarcada</td>
-          <td>Computador host externo</td>
-        </tr>
-        <tr>
-          <td><strong>Modo de Gravação</strong></td>
-          <td>Flash local (amostragem offline)</td>
-          <td>Disco de alta velocidade do host</td>
-        </tr>
-        <tr>
-          <td><strong>Frequência Suportada</strong></td>
-          <td>70 MHz a 6 GHz</td>
-          <td>70 MHz a 6 GHz</td>
-        </tr>
-        <tr>
-          <td><strong>Enquadramento</strong></td>
-          <td>Cenário 2 (Infiltrado / &lt;0,5m)</td>
-          <td>Cenário 1 (Sala vizinha / ~1m)</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="clean-card" style="border-left: 4px solid var(--brand-primary); margin-top: 24px;">
-      <h4>Precedentes e Prevenção no Sistema Eleitoral</h4>
-      <p style="font-size: 0.92rem; line-height: 1.6;">
-        A preocupação com dispositivos eletrônicos operando furtivamente em cabines não é meramente acadêmica. A Justiça Eleitoral brasileira já enfrentou casos reais de quebra do sigilo de votação por meio de dispositivos clandestinos, como na recente cassação de mandato conduzida pelo TRE-PA envolvendo a utilização de armações de óculos com microcâmeras em Ourilândia do Norte <a href="{{ '/referencias/#ref-15' | relative_url }}" class="cite-ref">[15]</a>.
-      </p>
-      <p style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 0;">
-        Enquanto câmeras ópticas exigem linha de visada direta sobre o teclado e a tela, receptores SDR interceptam sinais através de paredes e biombos, tornando as contramedidas ativas baseadas em ruído eletromagnético essenciais para a segurança física <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
-      </p>
-    </div>
-
-  </div>
-
+<div class="tech-block">
+  <div class="tech-block-title">Plataforma de Bancada // Referência Experimental</div>
+  <h4>Ettus USRP B200</h4>
+  <p style="font-size: 0.95rem; margin-bottom: 8px;">
+    O USRP B200 é a plataforma flexível adotada na bancada experimental da UTFPR <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>. O equipamento faz o front-end de radiofrequência (sintonizando faixas de 70 MHz a 6 GHz) e transmite as amostras brutas via interface USB 3.0 para processamento imediato em computador de alto desempenho.
+  </p>
+  <p style="font-size: 0.95rem; margin-bottom: 0;">
+    Embora dependente de um computador host externo, sua alta taxa de transferência (até 56 MHz de largura de banda instantânea) torna-o o equipamento ideal para testes de caracterização espectral e avaliação da eficácia da contramedida de ruído.
+  </p>
 </div>
+
+<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
+  <span class="section-num">§ 3.</span> Especificações Técnicas Comparadas
+</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parâmetro</th>
+      <th>Ettus USRP E312 (Portátil)</th>
+      <th>Ettus USRP B200 (Bancada)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Fonte de Alimentação</strong></td>
+      <td>Bateria interna recarregável</td>
+      <td>Barramento USB 3.0 ou fonte externa</td>
+    </tr>
+    <tr>
+      <td><strong>Capacidade de Processamento</strong></td>
+      <td>Dual-core ARM Cortex-A9 + Xilinx Zynq FPGA</td>
+      <td>Spartan-6 FPGA (requer PC host)</td>
+    </tr>
+    <tr>
+      <td><strong>Armazenamento de Amostras</strong></td>
+      <td>Cartão MicroSD / eMMC integrado (autônomo)</td>
+      <td>Armazenamento em disco do computador host</td>
+    </tr>
+    <tr>
+      <td><strong>Faixa de Cobertura de RF</strong></td>
+      <td>70 MHz a 6,0 GHz</td>
+      <td>70 MHz a 6,0 GHz</td>
+    </tr>
+    <tr>
+      <td><strong>Associação a Cenários</strong></td>
+      <td>Cenário 2 (Operador infiltrado / &lt; 0,5 m)</td>
+      <td>Cenário 1 (Sala adjacente com veículo / &asymp; 1,0 m)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
+  <span class="section-num">§ 4.</span> Precedentes e Jurisprudência Eleitoral
+</h2>
+
+<p>
+  A possibilidade de utilização de dispositivos eletrônicos compactos em seções eleitorais não é uma hipótese teórica abstrata. A jurisprudência eleitoral brasileira já registra cassações concretas motivadas pelo porte não autorizado de tecnologias de vigilância em cabines de votação, com destaque para o acórdão do TRE-PA no <strong>Recurso Eleitoral nº 0600629-58.2024.6.14.0074</strong> (município de Ourilândia do Norte, PA) <a href="{{ '/referencias/#ref-15' | relative_url }}" class="cite-ref">[15]</a>, no qual eleitores foram cooptados mediante entrega de óculos equipados com microcâmeras embutidas para comprovação do voto.
+</p>
+
+<p>
+  Enquanto a vigilância óptica depende de lentes visíveis e linha de visada desobstruída para o painel da urna (podendo ser coibida por inspeção visual), os receptores SDR interceptam ondas de radiofrequência passivas capazes de atravessar biombos, carteiras e alvenarias, reforçando a necessidade impreterível de <strong>contramedidas ativas baseadas em ruído eletromagnético</strong> <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+</p>
