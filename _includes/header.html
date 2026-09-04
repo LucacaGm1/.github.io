@@ -3,26 +3,34 @@
   :root {
     --bg-color: #ffffff;
     --text-color: #111111;
-    --header-bg: #ffffff;
+    --header-bg: rgba(255, 255, 255, 0.95);
     --border-color: #e8e8e8;
-    --link-color: #111111;
+    --link-color: #0056b3;
     --nav-link-color: #555555;
+    --card-bg: #f8f9fa;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.1);
   }
 
   [data-theme="dark"] {
     --bg-color: #121212;
     --text-color: #e0e0e0;
-    --header-bg: #1a1a1a;
+    --header-bg: rgba(26, 26, 26, 0.95);
     --border-color: #2d2d2d;
-    --link-color: #ffffff;
+    --link-color: #3793ff;
     --nav-link-color: #aaaaaa;
+    --card-bg: #1e1e1e;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.5);
   }
 
+  /* CONFIGURAÇÕES GERAIS COM TRANSIÇÃO SUAVE */
   body {
     background-color: var(--bg-color) !important;
     color: var(--text-color) !important;
-    padding-top: 80px !important;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    padding-top: 90px !important;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
   .wrapper {
@@ -38,16 +46,21 @@
     width: 100%;
     z-index: 9999;
     background-color: var(--header-bg) !important;
+    backdrop-filter: blur(8px); /* Efeito moderno de vidro fosco */
     border-bottom: 1px solid var(--border-color) !important;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
   }
 
   .site-title, .site-title:visited {
-    color: var(--link-color) !important;
+    color: var(--text-color) !important;
+    font-weight: 700;
   }
   
   .site-nav .page-link {
     color: var(--nav-link-color) !important;
+    font-weight: 500;
+    margin-left: 15px;
+    transition: color 0.2s ease;
   }
 
   .site-nav .page-link:hover {
@@ -55,11 +68,16 @@
   }
 
   .header-logo {
-    height: 40px !important;
+    height: 42px !important;
     width: auto !important;
     vertical-align: middle;
     margin-right: 12px;
-    margin-top: -5px;
+    margin-top: -3px;
+    transition: transform 0.3s ease;
+  }
+  
+  .header-logo:hover {
+    transform: scale(1.05);
   }
 
   .theme-toggle-btn {
@@ -70,15 +88,72 @@
     margin-left: 15px;
     font-size: 18px;
     color: var(--text-color);
-    transition: transform 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   .theme-toggle-btn:hover {
-    transform: scale(1.15);
+    transform: scale(1.2) rotate(15deg);
+  }
+
+  /* ==========================================
+     CLASSES DE ANIMAÇÃO (A Serem Usadas no Markdown)
+     ========================================== */
+  
+  /* 1. Suave revelação ao carregar a página */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  /* Delay para criar efeito de cascata sequencial */
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.3s; }
+  .delay-3 { animation-delay: 0.45s; }
+
+  /* 2. Cartões modernos com animação de foco */
+  .info-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--link-color);
+  }
+
+  /* 3. Efeito estético nas imagens (sombra e borda arredondada) */
+  .web-image {
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    max-width: 100%;
+    height: auto;
+    margin: 15px 0;
+  }
+  
+  .web-image:hover {
+    transform: scale(1.02);
+    box-shadow: var(--card-shadow-hover);
   }
 </style>
 
 <header class="site-header" role="banner">
-  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center; height: 56px;">
+  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center; height: 60px;">
     
     <!-- TÍTULO COM A LOGO DA UTFPR -->
     <a class="site-title" rel="author" href="{{ '/' | relative_url }}">
@@ -86,7 +161,7 @@
       {{ site.title | escape }}
     </a>
 
-    <!-- NAVEGAÇÃO E BOTÃO DE TEMA -->
+    <!-- NAVEGAÇÃO E ALTERNADOR -->
     <div style="display: flex; align-items: center;">
       <nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -106,7 +181,6 @@
         </div>
       </nav>
 
-      <!-- BOTÃO DE ALTERNAR TEMA -->
       <button id="theme-toggle" class="theme-toggle-btn" title="Alternar Modo Escuro">
         🌙
       </button>
@@ -115,36 +189,30 @@
   </div>
 </header>
 
-<!-- JAVASCRIPT: DETECÇÃO AUTOMÁTICA DO SISTEMA + PERSISTÊNCIA -->
 <script>
   const toggleButton = document.getElementById('theme-toggle');
   const htmlElement = document.documentElement;
 
-  // 1. Decisão do Tema Inicial
   const savedTheme = localStorage.getItem('theme');
   const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   
-  let initialTheme = 'light'; // Fallback padrão
+  let initialTheme = 'light';
   
   if (savedTheme) {
-    // Se o usuário já escolheu manualmente no passado, respeita a escolha
     initialTheme = savedTheme;
   } else if (systemPrefersDark) {
-    // Se não há histórico, mas o sistema/navegador está em modo escuro, ativa o modo escuro
     initialTheme = 'dark';
   }
 
-  // Aplica o tema decidido
   htmlElement.setAttribute('data-theme', initialTheme);
   updateToggleIcon(initialTheme);
 
-  // 2. Evento de clique para troca manual
   toggleButton.addEventListener('click', () => {
     const currentTheme = htmlElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
     htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme); // Grava a escolha para as próximas páginas
+    localStorage.setItem('theme', newTheme);
     updateToggleIcon(newTheme);
   });
 
