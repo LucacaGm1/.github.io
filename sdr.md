@@ -1,5 +1,4 @@
 ---
----
 layout: page
 title: "Dispositivos de Captura: Rádios SDR"
 permalink: /sdr/

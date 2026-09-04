@@ -1,5 +1,4 @@
 ---
----
 layout: page
 title: "Sobre o Projeto de Extensão"
 permalink: /sobre/

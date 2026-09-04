@@ -1,5 +1,4 @@
 ---
----
 layout: page
 title: "Referências Científicas e Normativas"
 permalink: /referencias/

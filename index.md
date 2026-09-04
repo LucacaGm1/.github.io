@@ -1,5 +1,4 @@
 ---
----
 layout: page
 title: "Proteção contra Canais Laterais em Urnas Eletrônicas"
 permalink: /

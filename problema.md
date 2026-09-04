@@ -1,5 +1,4 @@
 ---
----
 layout: page
 title: "O Problema: Ataques TEMPEST"
 permalink: /problema/
