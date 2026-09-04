@@ -4,14 +4,6 @@ title: "O Problema: Ataques TEMPEST"
 permalink: /problema/
 ---
 
-<div class="civic-banner">
-  <div class="civic-tag">Vulnerabilidade Física // Espionagem por Ondas de Rádio</div>
-  <h1 class="civic-title">Como as Emanações Eletromagnéticas Afetam as Telas de Votação</h1>
-  <div class="civic-meta">
-    Compreenda o fenômeno físico dos canais laterais (TEMPEST) e a disposição espacial de locais de votação <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>.
-  </div>
-</div>
-
 <h2 style="font-size: 1.4rem; margin-top: 30px; margin-bottom: 14px;">O Que São os Ataques TEMPEST?</h2>
 
 <p>

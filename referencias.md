@@ -4,14 +4,6 @@ title: "Referências Científicas e Normativas"
 permalink: /referencias/
 ---
 
-<div class="civic-banner">
-  <div class="civic-tag">Bibliografia // Fundamentação Teórica</div>
-  <h1 class="civic-title">Referências Científicas, Normativas e Jurídicas</h1>
-  <div class="civic-meta">
-    Catálogo de artigos publicados pela equipe, literatura internacional de canais laterais (TEMPEST) e documentação oficial dos órgãos eleitorais.
-  </div>
-</div>
-
 <h2 style="font-size: 1.35rem; margin-top: 30px; margin-bottom: 16px;">1. Produções Acadêmicas do Nosso Grupo (UTFPR / UFG)</h2>
 
 <div id="ref-1" class="bib-row">

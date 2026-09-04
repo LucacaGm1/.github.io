@@ -4,14 +4,6 @@ title: "Sobre a Pesquisa e Equipe"
 permalink: /sobre/
 ---
 
-<div class="civic-banner">
-  <div class="civic-tag">Extensão Universitária &bull; Ciência e Democracia</div>
-  <h1 class="civic-title">Proteção Tecnológica para o Sigilo do Voto</h1>
-  <div class="civic-meta">
-    Conheça a equipe de professores e estudantes da UTFPR Ponta Grossa e UFG dedicados à segurança eletromagnética das eleições <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
-  </div>
-</div>
-
 <h2 style="font-size: 1.4rem; margin-top: 30px; margin-bottom: 14px;">Origem e Motivação</h2>
 
 <p>
@@ -52,3 +44,8 @@ permalink: /sobre/
   <li><strong>Colaboração com o TSE:</strong> Submeter as descobertas e a solução de ruído às edições do <strong>Teste Público de Segurança (TPS)</strong> organizado pelo Tribunal Superior Eleitoral <a href="{{ '/referencias/#ref-17' | relative_url }}" class="cite-ref">[17]</a>.</li>
   <li><strong>Guia Prático para os Tribunais Regionais:</strong> Criar recomendações simples e acessíveis para ajudar os TREs a posicionar biombos e telas de forma segura nas escolas de votação <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.</li>
 </ul>
+
+<div class="info-panel related-links">
+  <h4>Metodologia e fontes</h4>
+  <p style="font-size: 0.95rem; margin-bottom: 0;">Veja a lista completa de <a href="{{ '/referencias/' | relative_url }}">referências científicas, normativas e jurídicas</a> que fundamenta o projeto.</p>
+</div>

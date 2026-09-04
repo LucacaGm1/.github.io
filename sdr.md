@@ -4,14 +4,6 @@ title: "Dispositivos de Captura: Rádios SDR"
 permalink: /sdr/
 ---
 
-<div class="civic-banner">
-  <div class="civic-tag">Engenharia e Hardware // Rádios SDR</div>
-  <h1 class="civic-title">Os Dispositivos Usados na Interceptação de Sinais de Vídeo</h1>
-  <div class="civic-meta">
-    Entenda a tecnologia dos Rádios Definidos por Software, conheça os aparelhos reais estudados pela pesquisa e veja por que receptores passivos exigem defesas ativas <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
-  </div>
-</div>
-
 <div class="context-box">
   <h4>Em Resumo</h4>
   <p>
@@ -66,12 +58,12 @@ permalink: /sdr/
   </div>
 
   <!-- CARTÃO 2: USRP E312 (PORTÁTIL) -->
-  <div class="info-panel" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between; border-left: 4px solid #b91c1c;">
+  <div class="info-panel" style="margin-bottom: 0; display: flex; flex-direction: column; justify-content: space-between;">
     <div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: #b91c1c; text-transform: uppercase; margin-bottom: 6px;">
-        Portátil e Autônomo // Cenário 2 (Crítico)
+      <div style="font-size: 0.78rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; margin-bottom: 6px;">
+        Portátil e Autônomo // Cenário 2
       </div>
-      <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 1.25rem; color: #b91c1c;">Ettus USRP E312 / Série E3xx</h3>
+      <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 1.25rem; color: var(--color-primary);">Ettus USRP E312 / Série E3xx</h3>
       
       <div class="figure-frame" style="margin: 10px 0 16px 0; padding: 10px; background: #fafbfc;">
         <img src="{{ '/assets/images/usrp_e3xx.jpg' | relative_url }}" alt="Rádio SDR Portátil Ettus USRP Série E3xx" style="max-height: 220px; object-fit: contain;">
