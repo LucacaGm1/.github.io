@@ -1,44 +1,84 @@
 ---
+---
 layout: page
-title: "Início: Soluções de Baixo Custo"
+title: "Proteção contra Canais Laterais em Urnas Eletrônicas"
 permalink: /
 ---
 
-<div class="animate-fade-in">
-  <p>A preservação do sigilo do voto eletrônico exige uma postura preventiva ante ameaças tecnológicas avançadas [1]. Embora as urnas eletrônicas brasileiras de última geração (modelos UE2020 e UE2022) contem com uma blindagem que atenua as emissões eletromagnéticas naturalmente em distâncias maiores que 0,5 metro [1, 2], as contramedidas físicas completas de hardware para modelos legados em larga escala são onerosas [3].</p>
-  
-  <p>A pesquisa de extensão do curso de bacharelado em <strong>Ciência da Computação da UTFPR Ponta Grossa</strong> investiga soluções práticas, de fácil adoção em infraestrutura pública e alta eficácia técnica [4, 5].</p>
+<div class="hero-banner">
+  <div class="badge-tag">Projeto de Extensão &bull; UTFPR Ponta Grossa</div>
+  <h2 style="margin-top: 0; margin-bottom: 12px; font-size: 1.65rem;">Mitigação de Baixo Custo para Preservação do Sigilo do Voto</h2>
+  <p style="margin-bottom: 0; font-size: 1.05rem; line-height: 1.7;">
+    A preservação do sigilo constitucional do voto exige uma abordagem técnica preventiva contra ameaças de interceptação eletromagnética <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>. Esta pesquisa investiga o uso de interferência intencional de baixo custo como blindagem defensiva para seções eleitorais brasileiras.
+  </p>
 </div>
 
----
+<div class="grid-3">
+  <div class="stat-card">
+    <div class="stat-value">155 Milhões</div>
+    <div class="stat-label">Eleitores no corpo eleitoral nacional <a href="{{ '/referencias/#ref-17' | relative_url }}" class="cite-ref">[17]</a></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">&asymp; 0,5 Metro</div>
+    <div class="stat-label">Distância crítica de atenuação nas UE2020/22 <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-13' | relative_url }}" class="cite-ref">[13]</a></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">Custo Acessível</div>
+    <div class="stat-label">Mitigação operacional sem reforma estrutural <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a></div>
+  </div>
+</div>
 
-<div style="display: flex; gap: 30px; flex-wrap: wrap; margin-top: 30px;">
+<hr>
+
+<div class="grid-2" style="align-items: start;">
   
-  <!-- Bloco da Esquerda: Explicação da Solução -->
-  <div style="flex: 1; min-width: 300px;" class="animate-fade-in delay-1">
-    <h3>🛡️ O "Chiado" Protetor (Interferência de Sinal)</h3>
-    <p>A principal contramedida de baixo custo defendida pelo projeto consiste no uso de <strong>monitores auxiliares operando com ruído ("chiado")</strong> posicionados estrategicamente ao redor da Urna Eletrônica [3, 6].</p>
-    
-    <div class="info-card">
-      <h4>Como funciona?</h4>
-      <p>A exibição do sinal gerador de estática no monitor acessório produz poluição eletromagnética intencional na mesma faixa de frequência em que o cabo da urna vaza as informações [3, 7]. Essa interferência embaralha o sinal captado pelo rádio (SDR) do atacante, transformando o que seria uma imagem do voto em puro ruído ilegível [6, 7].</p>
+  <!-- Coluna 1: A Solução de Ruído Protetor -->
+  <div>
+    <h3 style="margin-bottom: 16px;">Princípio Físico da Contramedida</h3>
+    <p>
+      Embora os modelos mais recentes de urnas (UE2020 e UE2022) incorporem blindagens que atenuam significativamente as emanações em distâncias superiores a 0,5 metro <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-13' | relative_url }}" class="cite-ref">[13]</a>, a substituição completa de todo o parque legado ou o isolamento em cabines especiais representaria custos inviáveis para a administração pública.
+    </p>
+
+    <div class="clean-card" style="border-left: 4px solid var(--brand-primary);">
+      <h4 style="color: var(--brand-primary);">Interferência de Ruído Espectral (Jamming Defensivo)</h4>
+      <p style="font-size: 0.95rem;">
+        A solução proposta pelo grupo consiste em posicionar <strong>monitores auxiliares operando com padrões visuais de estática ("chiado")</strong> na própria seção eleitoral <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+      </p>
+      <p style="font-size: 0.95rem;">
+        Ao emitir ruído controlado nas mesmas faixas de frequência e harmônicas do sinal de vídeo da urna <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a>, o sinal capturado por um receptor de rádio externo é corrompido, tornando matematicamente inviável a reconstituição da imagem do voto digitado pelo eleitor <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-7' | relative_url }}" class="cite-ref">[7]</a>.
+      </p>
     </div>
-    
-    <div class="info-card">
-      <h4>Benefício Público imediato</h4>
-      <p>Evita substituições onerosas de hardware e garante o sigilo do voto para aproximadamente <strong>155 milhões de eleitores</strong> utilizando recursos acessíveis que o próprio TSE pode mobilizar localmente [4, 8, 9].</p>
+
+    <div class="clean-card">
+      <h4>Vantagens Operacionais</h4>
+      <ul style="padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; color: var(--text-secondary);">
+        <li style="margin-bottom: 6px;"><strong>Disponibilidade Imediata:</strong> Utiliza equipamentos comuns de exibição sem demandar modificações no hardware lacrado da urna.</li>
+        <li style="margin-bottom: 6px;"><strong>Imunidade a Paredes:</strong> Protege inclusive contra receptores instalados em salas adjacentes ou calçadas próximas <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.</li>
+        <li><strong>Complementaridade:</strong> Soma-se às práticas de fiscalização física já exercidas pelos mesários e tribunais eleitorais.</li>
+      </ul>
     </div>
   </div>
 
-  <!-- Bloco da Direita: Imagem Decorativa e Chamada de Solução -->
-  <div style="flex: 1; min-width: 300px; text-align: center;" class="animate-fade-in delay-2">
-    <h4>Demonstração Visual da Interceptação</h4>
-    <p style="font-size: 0.9em; opacity: 0.8;">Abaixo, a prova física de como um ataque sem proteção reconstrói o voto no rádio [10, 11]:</p>
-    
-    <!-- IMAGEM DA RECONSTRUÇÃO DO VOTO DO SEU ARTIGO -->
-    <img src="{{ '/assets/images/reconstrucao_cenario1.png' | relative_url }}" alt="Reconstrução de sinal VGA de Urna Eletrônica mostrando voto nulo" class="web-image" style="width: 80%;">
-    
-    <p style="font-size: 0.85em; font-style: italic; margin-top: 10px;">Fig 1. Captura simulada de tela do voto reconstituída à distância por SDR Ettus USRP B200 [12].</p>
+  <!-- Coluna 2: Evidência Experimental do Ataque -->
+  <div>
+    <h3 style="margin-bottom: 16px;">Registro Experimental do Ataque</h3>
+    <p>
+      Abaixo apresenta-se uma das reconstruções espectrais obtidas durante os ensaios laboratoriais controlados da UTFPR, demonstrando a necessidade de contramedidas ativas:
+    </p>
+
+    <div class="figure-container">
+      <img src="{{ '/assets/images/1mdaurna.png' | relative_url }}" alt="Reconstrução de sinal da urna eletrônica obtida a 1 metro de distância" class="figure-img">
+      <div class="figure-caption">
+        <strong>Figura 1:</strong> Reconstrução de tela da Urna Eletrônica captada à distância de 1 metro através de um receptor SDR sem o acionamento do ruído protetor <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+      </div>
+    </div>
+
+    <div class="clean-card" style="background: var(--bg-surface-elevated); margin-top: 15px;">
+      <h4 style="margin-bottom: 8px;">Conclusão dos Testes</h4>
+      <p style="font-size: 0.92rem; margin-bottom: 0;">
+        Sem interferência defensiva, os traços numéricos e botões da tela tornam-se legíveis por rádio em ambientes adjacentes. A inserção do ruído anula a relação sinal-ruído (SNR), eliminando a legibilidade gráfica <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+      </p>
+    </div>
   </div>
 
 </div>

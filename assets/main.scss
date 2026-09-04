@@ -2,33 +2,514 @@
 ---
 @import "minima";
 
-// 1. FAZER O SITE APROVEITAR TODA A TELA (LARGURA TOTAL)
-.wrapper {
-  max-width: 95% !important; // Ocupa 95% da largura da tela
-  padding-left: 30px !important;
-  padding-right: 30px !important;
+/* ==========================================================================
+   SISTEMA DE DESIGN MODERNO - UTFPR CANAIS LATERAIS (TEMPEST)
+   ========================================================================== */
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --brand-primary: #0284c7;
+  --brand-primary-hover: #0369a1;
+  --brand-accent: #2563eb;
+  --tag-bg: #e0f2fe;
+  --tag-text: #0369a1;
+  --tag-border: #bae6fd;
+  --card-shadow: 0 4px 15px -1px rgba(15, 23, 42, 0.05), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+  --card-shadow-hover: 0 12px 28px -4px rgba(2, 132, 199, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --header-border: rgba(226, 232, 240, 0.9);
+  --table-border: #e2e8f0;
+  --table-stripe: #f8fafc;
+  --cite-link: #0284c7;
+  --cite-bg: #f0f9ff;
+  --cite-border: #e0f2fe;
+  --banner-gradient: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
 }
 
-// 2. DEIXAR O CABEÇALHO (MENU) TOTALMENTE FIXO NO TOPO
+[data-theme="dark"] {
+  --bg-primary: #090d16;
+  --bg-surface: #111827;
+  --bg-surface-elevated: #1e293b;
+  --border-subtle: #1e293b;
+  --border-medium: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --brand-primary: #38bdf8;
+  --brand-primary-hover: #7dd3fc;
+  --brand-accent: #60a5fa;
+  --tag-bg: rgba(56, 189, 248, 0.12);
+  --tag-text: #7dd3fc;
+  --tag-border: rgba(56, 189, 248, 0.25);
+  --card-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.45);
+  --card-shadow-hover: 0 12px 30px -4px rgba(56, 189, 248, 0.15), 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --header-bg: rgba(11, 15, 25, 0.88);
+  --header-border: rgba(30, 41, 59, 0.85);
+  --table-border: #1e293b;
+  --table-stripe: #0f172a;
+  --cite-link: #38bdf8;
+  --cite-bg: rgba(56, 189, 248, 0.12);
+  --cite-border: rgba(56, 189, 248, 0.25);
+  --banner-gradient: linear-gradient(135deg, #0369a1 0%, #1e3a8a 100%);
+}
+
+/* Base Body & Reset */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  padding-top: 86px !important;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout Wrapper */
+.wrapper {
+  max-width: 1200px !important;
+  padding-left: 28px !important;
+  padding-right: 28px !important;
+  margin: 0 auto;
+}
+
+/* Header & Glassmorphism Navigation */
 .site-header {
   position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
-  background-color: #ffffff !important; // Garante fundo branco
-  border-bottom: 1px solid #e8e8e8;
+  background-color: var(--header-bg) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--header-border) !important;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+  min-height: 68px;
 }
 
-// 3. COMPENSAR O ESPAÇO DO CABEÇALHO FIXO
-body {
-  padding-top: 80px !important;
+.site-title, .site-title:visited {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 1.12rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
 
-// 4. CONFIGURAÇÃO DA LOGO NO CABEÇALHO
+.site-title:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
 .header-logo {
-  height: 40px; 
-  vertical-align: middle;
-  margin-right: 12px;
-  margin-top: -5px;
+  height: 38px !important;
+  width: auto !important;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.header-logo:hover {
+  transform: scale(1.04);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+}
+
+.site-nav .page-link {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-left: 14px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  text-decoration: none;
+}
+
+.site-nav .page-link:hover {
+  color: var(--brand-primary) !important;
+  background-color: var(--cite-bg);
+  text-decoration: none;
+}
+
+/* Alternador de Tema */
+.theme-toggle-btn {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 7px 10px;
+  margin-left: 18px;
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--border-subtle);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Headings e Tipografia */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+a {
+  color: var(--brand-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--brand-primary-hover);
+  text-decoration: underline;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-subtle);
+  margin: 2.2rem 0;
+}
+
+/* Hero & Badges */
+.hero-banner {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 32px;
+  margin-bottom: 30px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--banner-gradient);
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tag-text);
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+/* Cards Profissionais */
+.clean-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.clean-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--border-medium);
+}
+
+.clean-card h3, .clean-card h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.clean-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Métricas & Destaques Rápidos */
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* Imagens Técnicas e Legendas */
+.figure-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px 0;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+.figure-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  display: block;
+  margin: 0 auto;
+}
+
+.figure-caption {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Citações Numéricas Limpas e Clicáveis */
+.cite-ref {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78em;
+  font-weight: 700;
+  color: var(--cite-link);
+  background-color: var(--cite-bg);
+  border: 1px solid var(--cite-border);
+  padding: 1px 6px;
+  border-radius: 5px;
+  margin: 0 2px;
+  vertical-align: baseline;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+
+.cite-ref:hover {
+  background-color: var(--brand-primary);
+  color: #ffffff !important;
+  border-color: var(--brand-primary);
+  transform: translateY(-1px);
+}
+
+:target {
+  scroll-margin-top: 110px;
+  animation: highlightAnchor 2.5s ease-out;
+}
+
+@keyframes highlightAnchor {
+  0% { background-color: rgba(56, 189, 248, 0.35); }
+  100% { background-color: transparent; }
+}
+
+/* Cards de Referência Científica */
+.ref-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--brand-primary);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.ref-item:hover {
+  border-color: var(--brand-primary);
+  transform: translateX(4px);
+}
+
+.ref-num {
+  font-weight: 800;
+  color: var(--brand-primary);
+  margin-right: 8px;
+}
+
+.ref-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.ref-meta {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Tabelas Técnicas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--table-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+th {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--table-border);
+  font-size: 0.9rem;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+tr:nth-child(even) td {
+  background-color: var(--table-stripe);
+}
+
+/* Rodapé Institucional */
+.site-footer {
+  background-color: var(--bg-surface) !important;
+  border-top: 1px solid var(--border-subtle) !important;
+  padding: 40px 0 25px 0 !important;
+  margin-top: 60px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .wrapper {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .post-title {
+    font-size: 1.6rem;
+  }
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.footer-link {
+  color: var(--text-secondary) !important;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+}
+
+.footer-link:hover {
+  color: var(--brand-primary) !important;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 20px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
 }

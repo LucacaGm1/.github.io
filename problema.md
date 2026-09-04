@@ -1,51 +1,83 @@
 ---
+---
 layout: page
 title: "O Problema: Ataques TEMPEST"
 permalink: /problema/
 ---
 
-<div class="animate-fade-in">
-  <h3>A Realidade do Vazamento Eletromagnético</h3>
-  <p>Os computadores e cabos de displays de vídeo geram ondas de rádio involuntárias que espalham a informação gráfica pelo ambiente [13, 14]. Adversários de posse de um <strong>Rádio Definido por Software (SDR)</strong> de baixo custo conseguem reconstruir exatamente o que está na tela da urna a partir dessas emanações [13-15].</p>
+<div class="hero-banner">
+  <div class="badge-tag">Análise de Vulnerabilidade</div>
+  <h2 style="margin-top: 0; margin-bottom: 12px; font-size: 1.65rem;">Vazamento Eletromagnético e Canais Laterais em Telas</h2>
+  <p style="margin-bottom: 0; font-size: 1.05rem; line-height: 1.7;">
+    Sinais elétricos de alta frequência trafegando entre processadores gráficos e displays emitem radiação eletromagnética residual que se propaga pelo ar <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a> <a href="{{ '/referencias/#ref-16' | relative_url }}" class="cite-ref">[16]</a>. Utilizando receptores de Rádio Definido por Software (SDR) de custo acessível, atacantes podem interceptar passivamente essas emissões e reproduzir o conteúdo exibido na tela sem necessidade de conexão física ou invasão de software <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+  </p>
 </div>
 
----
-
-<div style="display: flex; gap: 30px; flex-wrap: wrap; margin-top: 20px;">
-
-  <!-- LADO ESQUERDO: OS CENÁRIOS DE ATAQUE -->
-  <div style="flex: 1.2; min-width: 300px;" class="animate-fade-in delay-1">
-    <h3>Cenários Críticos Mapeados pelo Grupo</h3>
+<div class="grid-2" style="align-items: start;">
+  
+  <!-- Coluna da Esquerda: Cenários Críticos Identificados -->
+  <div>
+    <h3 style="margin-bottom: 16px;">Cenários de Ameaça Mapeados</h3>
     
-    <div class="info-card">
-      <strong>Cenário 1: Através da Parede (Distância ≈ 1m) [2, 11, 12]</strong>
-      <p style="margin-top: 10px; font-size: 0.95em;">O atacante monta o rádio em uma sala de aula vizinha ou no corredor de fora do prédio de votação [2, 11]. Ele se aproveita do fato de as cabines de votação serem encostadas na parede divisória para captar o sinal residual através da alvenaria [2, 11].</p>
+    <div class="clean-card" style="border-left: 4px solid var(--brand-accent);">
+      <div class="badge-tag" style="margin-bottom: 8px;">Cenário 1 &bull; Através de Alvenaria</div>
+      <h4>Captura em Sala Adjacente ou Corredor Externo (~1 metro)</h4>
+      <p style="font-size: 0.95rem;">
+        Em diversas escolas e prédios públicos utilizados como locais de votação, as cabines são posicionadas encostadas em paredes divisórias de salas de aula vizinhas ou voltadas para janelas e calçadas <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+      </p>
+      <p style="font-size: 0.95rem; margin-bottom: 0;">
+        Um receptor SDR instalado no cômodo contíguo consegue capturar as emanações residuais que atravessam a parede, decodificando os votos sem levantar qualquer suspeita no interior da seção eleitoral <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a>.
+      </p>
     </div>
 
-    <div class="info-card">
-      <strong>Cenário 2: Agente Interno Cooptado (Distância < 0,5m) [2, 11, 12]</strong>
-      <p style="margin-top: 10px; font-size: 0.95em;">Um mesário ou fiscal eleitoral mal-intencionado carrega secretamente um SDR compacto alimentado por bateria [2, 11]. Pela proximidade extrema, ele consegue contornar a blindagem natural dos modelos de urna mais novos [2, 16].</p>
+    <div class="clean-card" style="border-left: 4px solid #f59e0b;">
+      <div class="badge-tag" style="margin-bottom: 8px; color: #b45309; background: #fef3c7; border-color: #fde68a;">Cenário 2 &bull; Agente Interno</div>
+      <h4>Operação Discreta em Proximidade Extrema (&lt; 0,5 metro)</h4>
+      <p style="font-size: 0.95rem;">
+        Mesários, fiscais partidários ou terceiros que tenham permanência autorizada no recinto podem portar dispositivos de gravação de RF compactos alimentados por bateria <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+      </p>
+      <p style="font-size: 0.95rem; margin-bottom: 0;">
+        Nessa faixa de proximidade extrema, até mesmo a atenuação natural de carcaça das urnas eletrônicas mais recentes (UE2020 e UE2022) <a href="{{ '/referencias/#ref-13' | relative_url }}" class="cite-ref">[13]</a> pode ser suplantada por receptores de alta sensibilidade <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+      </p>
+    </div>
+
+    <div class="clean-card">
+      <h4>Contexto Físico das Seções Eleitorais</h4>
+      <p style="font-size: 0.92rem; margin-bottom: 0;">
+        O mapeamento em campo realizado pela pesquisa em Ponta Grossa (PR) constatou que a disposição espacial de carteiras e biombos frequentemente coloca o equipamento a distâncias vulneráveis em relação a janelas, pátios ou corredores de livre circulação <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+      </p>
     </div>
   </div>
 
-  <!-- LADO DIREITO: FOTO DO LOCAL REAL + PROVA DOS CENÁRIOS -->
-  <div style="flex: 1; min-width: 300px; text-align: center;" class="animate-fade-in delay-2">
-    <h3>Evidência Experimental</h3>
-    
-    <!-- FOTO DA SEÇÃO ELEITORAL DE PONTA GROSSA -->
-    <img src="{{ '/assets/images/secao_eleitoral.png' | relative_url }}" alt="Seção Eleitoral compatível com os ataques TEMPEST" class="web-image">
-    <p style="font-size: 0.8em; font-style: italic; margin-top: 5px;">Seção Eleitoral real nº 47 de Ponta Grossa/PR, demonstrando a proximidade das cabines com a rua e salas vizinhas [2, 17].</p>
-    
-    <div style="display: flex; gap: 10px; margin-top: 15px;">
-      <div style="flex: 1;">
-        <img src="{{ '/assets/images/reconstrucao_cenario1.png' | relative_url }}" alt="Cenário 1" class="web-image">
-        <span style="font-size: 0.75em; font-weight: bold; display: block;">Cenário 1 (Com Parede) [11]</span>
-      </div>
-      <div style="flex: 1;">
-        <img src="{{ '/assets/images/reconstrucao_cenario2.png' | relative_url }}" alt="Cenário 2" class="web-image">
-        <span style="font-size: 0.75em; font-weight: bold; display: block;">Cenário 2 (Sem Obstáculos) [11]</span>
+  <!-- Coluna da Direita: Evidências Visuais e Comparativo -->
+  <div>
+    <h3 style="margin-bottom: 16px;">Evidência Experimental e Planta Real</h3>
+
+    <div class="figure-container">
+      <img src="{{ '/assets/images/exemplode_secao_eleitoral_adjacente_a_rua.png' | relative_url }}" alt="Planta de seção eleitoral adjacente à via pública" class="figure-img">
+      <div class="figure-caption">
+        <strong>Figura 2:</strong> Levantamento de seção eleitoral física em Ponta Grossa (PR), ilustrando a vulnerabilidade da proximidade entre as cabines de votação e áreas de acesso público externo <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
       </div>
     </div>
+
+    <h4 style="margin-top: 24px; margin-bottom: 12px;">Comparação da Reconstituição do Sinal por Distância</h4>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <div class="figure-container" style="margin: 0; padding: 12px;">
+        <img src="{{ '/assets/images/1mdaurna.png' | relative_url }}" alt="Reconstrução a 1 metro" class="figure-img">
+        <div class="figure-caption" style="font-size: 0.8rem; margin-top: 8px;">
+          <strong>Distância de 1,0 m</strong><br>Captação simulando sala adjacente com parede divisória <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+        </div>
+      </div>
+
+      <div class="figure-container" style="margin: 0; padding: 12px;">
+        <img src="{{ '/assets/images/0,5mdaurna.png' | relative_url }}" alt="Reconstrução a 0,5 metro" class="figure-img">
+        <div class="figure-caption" style="font-size: 0.8rem; margin-top: 8px;">
+          <strong>Distância de 0,5 m</strong><br>Proximidade extrema em alta nitidez espectral <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
