@@ -4,15 +4,41 @@ title: "Início: Soluções de Baixo Custo"
 permalink: /
 ---
 
-A garantia do sigilo e da transparência é um pilar fundamental da democracia eletrônica contemporânea [1]. No entanto, abordagens tradicionais para mitigar ataques eletromagnéticos consistem na aplicação de blindagem física de hardware, uma alternativa cara e de difícil implementação na escala do sistema eleitoral brasileiro [2, 3].
+<div class="animate-fade-in">
+  <p>A preservação do sigilo do voto eletrônico exige uma postura preventiva ante ameaças tecnológicas avançadas [1]. Embora as urnas eletrônicas brasileiras de última geração (modelos UE2020 e UE2022) contem com uma blindagem que atenua as emissões eletromagnéticas naturalmente em distâncias maiores que 0,5 metro [1, 2], as contramedidas físicas completas de hardware para modelos legados em larga escala são onerosas [3].</p>
+  
+  <p>A pesquisa de extensão do curso de bacharelado em <strong>Ciência da Computação da UTFPR Ponta Grossa</strong> investiga soluções práticas, de fácil adoção em infraestrutura pública e alta eficácia técnica [4, 5].</p>
+</div>
 
-Este projeto de extensão explora uma solução inovadora, econômica e de fácil adoção para a infraestrutura pública [2, 4].
+---
 
-### O "Chiado" do Bem: Mitigação por Interferência
-Nossa hipótese principal propõe que a disposição intencional de **monitores auxiliares operando com ruído ("chiado")** nas proximidades da urna eletrônica causa uma interferência eletromagnética deliberada [2, 5]. 
+<div style="display: flex; gap: 30px; flex-wrap: wrap; margin-top: 30px;">
+  
+  <!-- Bloco da Esquerda: Explicação da Solução -->
+  <div style="flex: 1; min-width: 300px;" class="animate-fade-in delay-1">
+    <h3>🛡️ O "Chiado" Protetor (Interferência de Sinal)</h3>
+    <p>A principal contramedida de baixo custo defendida pelo projeto consiste no uso de <strong>monitores auxiliares operando com ruído ("chiado")</strong> posicionados estrategicamente ao redor da Urna Eletrônica [3, 6].</p>
+    
+    <div class="info-card">
+      <h4>Como funciona?</h4>
+      <p>A exibição do sinal gerador de estática no monitor acessório produz poluição eletromagnética intencional na mesma faixa de frequência em que o cabo da urna vaza as informações [3, 7]. Essa interferência embaralha o sinal captado pelo rádio (SDR) do atacante, transformando o que seria uma imagem do voto em puro ruído ilegível [6, 7].</p>
+    </div>
+    
+    <div class="info-card">
+      <h4>Benefício Público imediato</h4>
+      <p>Evita substituições onerosas de hardware e garante o sigilo do voto para aproximadamente <strong>155 milhões de eleitores</strong> utilizando recursos acessíveis que o próprio TSE pode mobilizar localmente [4, 8, 9].</p>
+    </div>
+  </div>
 
-*   **Bloqueio de Sinal:** A poluição eletromagnética gerada pelo monitor acessório atua diretamente nas frequências de vazamento do sinal de vídeo [6].
-*   **Perda de Inteligibilidade:** Essa interferência "suja" o espectro captado por receptores não autorizados, inviabilizando completamente a espionagem e a reconstrução da imagem do voto à distância [5, 6].
-*   **Viabilidade Financeira:** Em vez de realizar substituições onerosas de hardware em larga escala, o uso estratégico de monitores paralelos geradores de ruído fornece uma camada imediata de segurança física compatível com o orçamento público [5, 7].
+  <!-- Bloco da Direita: Imagem Decorativa e Chamada de Solução -->
+  <div style="flex: 1; min-width: 300px; text-align: center;" class="animate-fade-in delay-2">
+    <h4>Demonstração Visual da Interceptação</h4>
+    <p style="font-size: 0.9em; opacity: 0.8;">Abaixo, a prova física de como um ataque sem proteção reconstrói o voto no rádio [10, 11]:</p>
+    
+    <!-- IMAGEM DA RECONSTRUÇÃO DO VOTO DO SEU ARTIGO -->
+    <img src="{{ '/assets/images/reconstrucao_cenario1.png' | relative_url }}" alt="Reconstrução de sinal VGA de Urna Eletrônica mostrando voto nulo" class="web-image" style="width: 80%;">
+    
+    <p style="font-size: 0.85em; font-style: italic; margin-top: 10px;">Fig 1. Captura simulada de tela do voto reconstituída à distância por SDR Ettus USRP B200 [12].</p>
+  </div>
 
-[Leia mais sobre a natureza técnica do problema na nossa página de Explicação do Problema](./problema.html).
+</div>
