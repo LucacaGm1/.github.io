@@ -4,72 +4,74 @@ title: "Proteção Contra Canais Laterais em Urnas Eletrônicas"
 permalink: /
 ---
 
-<div class="paper-masthead">
-  <div class="paper-context">Pesquisa Aplicada &bull; Cibersegurança e Defesa Eleitoral</div>
-  <h1 class="paper-title">Mitigação de Baixo Custo para Preservação do Sigilo do Voto ante Canais Laterais Eletromagnéticos</h1>
-  <div class="paper-meta">
-    <strong>Pesquisadores:</strong> Lucas Brito, Leonardo Teodoro, Pedro Tomaz, Alyson Isaluski, Leandro Hyeda, Antônio Carlos de Oliveira-Jr. e Saulo Queiroz <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a><br>
-    <strong>Instituições:</strong> Universidade Tecnológica Federal do Paraná (UTFPR Câmpus Ponta Grossa) &bull; Universidade Federal de Goiás (CEIA/UFG)<br>
-    <strong>Veículo de Publicação:</strong> Simpósio Brasileiro de Segurança da Informação e de Sistemas Computacionais (SBSEG 2026) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>
+<div class="civic-banner">
+  <div class="civic-tag">Pesquisa de Extensão &bull; UTFPR Ponta Grossa &amp; UFG</div>
+  <h1 class="civic-title">Proteção Eletromagnética de Baixo Custo para a Urna Eletrônica Brasileira</h1>
+  <div class="civic-meta">
+    Investigação de segurança física sobre emanações de vídeo (TEMPEST) e validação de ruído espectral para preservação do sigilo do voto <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>.
   </div>
 </div>
 
-<div class="abstract-box">
-  <div class="abstract-label">Resumo Executivo</div>
+<div class="context-box">
+  <h4>Sobre a Proposta</h4>
   <p>
-    A salvaguarda do sigilo do voto constitui garantia pétrea do sistema democrático brasileiro. Este trabalho investiga a viabilidade prática de ataques de canais laterais baseados em emanações eletromagnéticas involuntárias (ataques TEMPEST) emitidas por interfaces de vídeo da Urna Eletrônica Brasileira <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>. Embora revisões recentes de hardware (modelos UE2020 e UE2022) atenuem essas emissões a distâncias superiores a 0,5 metro <a href="{{ '/referencias/#ref-13' | relative_url }}" class="cite-ref">[13]</a>, demonstramos que cenários com agentes internos ou seções eleitorais contíguas a vias públicas impõem riscos residuais concretos. Como resposta, propõe-se e valida-se experimentalmente uma contramedida ativa de baixo custo baseada na injeção intencional de ruído espectral ("chiado") via monitores auxiliares, degradando a relação sinal-ruído (SNR) e inviabilizando a reconstrução gráfica por receptores de radiofrequência sem necessidade de reformas onerosas no parque de urnas <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+    As urnas eletrônicas mais recentes (modelos UE2020 e UE2022) contam com blindagem que atenua naturalmente os sinais eletromagnéticos a partir de meio metro de distância <a href="{{ '/referencias/#ref-13' | relative_url }}" class="cite-ref">[13]</a>. No entanto, para cobrir modelos legados e neutralizar cenários com agentes muito próximos ou cabines encostadas em paredes vizinhas, este projeto de extensão da <strong>UTFPR Ponta Grossa</strong> e <strong>UFG</strong> avalia uma solução prática: o uso de monitores comuns transmitindo ruído visual ("chiado") para mascarar o sinal e resguardar o voto de mais de 155 milhões de eleitores <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-17' | relative_url }}" class="cite-ref">[17]</a>.
   </p>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 1.</span> O Mecanismo da Contramedida Defensiva
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 32px; margin-bottom: 14px;">Como Funciona o Ruído Protetor?</h2>
 
 <p>
-  A abordagem convencional para neutralização de vazamentos TEMPEST envolve blindagens completas de gaiola de Faraday, cabos coaxiais duplamente blindados e filtragem pesada de alimentação. No contexto eleitoral brasileiro, que mobiliza aproximadamente <strong>155 milhões de eleitores</strong> <a href="{{ '/referencias/#ref-17' | relative_url }}" class="cite-ref">[17]</a> em quase 500 mil seções em todo o território nacional, reformas estruturais desse porte para equipamentos legados resultariam em custos operacionais e logísticos proibitivos.
+  Telas de computador e cabos de vídeo emitem ondas de rádio involuntárias enquanto funcionam <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>. Um receptor de Rádio Definido por Software (SDR) sintonizado na frequência certa pode interceptar essas ondas e tentar desenhar na tela o que o eleitor está vendo <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
 </p>
 
-<p>
-  A contramedida investigada pela equipe da UTFPR adota o princípio de <strong>embaralhamento espectral intencional (defensive jamming)</strong> <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>:
-</p>
-
-<div class="tech-block">
-  <div class="tech-block-title">Princípio Físico Operacional</div>
-  <h4>Geração de Ruído em Frequências Harmônicas Coincidentes</h4>
-  <p style="font-size: 0.95rem; margin-bottom: 12px;">
-    Monitores ou telas convencionais adicionais são posicionados no perímetro da cabine de votação exibindo padrões dinâmicos de alta entropia (ruído estático de vídeo, popularmente denominado "chiado") <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+<div class="info-panel">
+  <h4>A Solução Baseada em Estática de Vídeo</h4>
+  <p style="font-size: 0.95rem; margin-bottom: 10px;">
+    Ao posicionar uma tela auxiliar comum na seção eleitoral reproduzindo um sinal contínuo de estática ("chiado"), geramos uma interferência inofensiva exatamente na mesma frequência do sinal da urna <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a>.
   </p>
   <p style="font-size: 0.95rem; margin-bottom: 0;">
-    Como os sinais de vídeo operam em frequências fundamentais e harmônicas bem mapeadas <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a>, a estática do monitor auxiliar emite energia de radiofrequência sobreposta na mesma faixa do cabo da urna. Isso sobrecarrega a banda de captura do receptor SDR do invasor com componentes estocásticas, tornando o sinal reconstituído indecifrável <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-7' | relative_url }}" class="cite-ref">[7]</a>.
+    Essa sobreposição destrói a nitidez do sinal captado pelo rádio espião, transformando a imagem do voto em ruído ilegível sem exigir nenhuma alteração física no hardware lacrado da urna eletrônica <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-7' | relative_url }}" class="cite-ref">[7]</a>.
   </p>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 2.</span> Evidência Experimental de Laboratório
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Evidência Experimental em Laboratório</h2>
 
 <p>
-  Durante a fase de testes controlados de bancada, a equipe utilizou receptores de Rádio Definido por Software sintonizados nas frequências harmônicas de vídeo para avaliar a inteligibilidade do sinal a diferentes distâncias sem a presença do ruído protetor:
+  Durante os ensaios no laboratório da UTFPR, capturamos o sinal de vídeo sem a presença do ruído protetor para demonstrar a viabilidade do ataque:
 </p>
 
-<div class="scientific-figure">
-  <img src="{{ '/assets/images/1mdaurna.png' | relative_url }}" alt="Reconstrução de sinal de vídeo obtida a 1 metro de distância">
-  <div class="figure-meta">
-    <strong>Figura 1.</strong> Reconstrução passiva de sinal gráfico da Urna Eletrônica a uma distância de 1,0 metro em ambiente de teste de laboratório, sem o acionamento do ruído protetor <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>. Observa-se a delineação dos contornos da tela de votação. A ativação do monitor auxiliar com estática suprime integralmente esse contraste, resultando em ruído gaussiano homogêneo.
+<div class="figure-frame">
+  <img src="{{ '/assets/images/1mdaurna.png' | relative_url }}" alt="Reconstrução de tela da urna eletrônica a 1 metro de distância">
+  <div class="figure-legend">
+    <strong>Figura 1.</strong> Reconstrução de sinal de tela da Urna Eletrônica captada à distância de 1,0 metro sem acionamento de ruído protetor <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>. Com o monitor de estática ligado na mesma seção, a imagem é completamente neutralizada.
   </div>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 3.</span> Estrutura do Portal Técnico
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Navegação do Portal</h2>
 
 <p>
-  Para aprofundar a compreensão dos aspectos técnicos e práticos da pesquisa, explore os tópicos estruturados abaixo:
+  Conheça os detalhes completos da pesquisa nas seções temáticas:
 </p>
 
-<ul style="line-height: 1.8;">
-  <li><strong><a href="{{ '/problema/' | relative_url }}">O Problema &bull; Ataques TEMPEST</a>:</strong> Descrição dos vetores físicos de vazamento, mapeamento de seções eleitorais reais e análise comparativa dos cenários de ataque (1,0 m vs. 0,5 m).</li>
-  <li><strong><a href="{{ '/sdr/' | relative_url }}">Rádios SDR</a>:</strong> Arquitetura dos receptores Ettus USRP B200 e USRP E312, características de portabilidade e correlação com riscos flagrados em auditorias eleitorais.</li>
-  <li><strong><a href="{{ '/sobre/' | relative_url }}">Sobre a Pesquisa</a>:</strong> Coordenação acadêmica do Prof. Saulo Queiroz, pesquisadores, vínculos com o CEIA/UFG e metas de contribuição para o Teste Público de Segurança (TPS) do TSE.</li>
-  <li><strong><a href="{{ '/referencias/' | relative_url }}">Referências Científicas</a>:</strong> Catálogo completo dos artigos publicados pelo grupo, literatura seminal de TEMPEST e documentação dos órgãos eleitorais.</li>
-</ul>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+  <div class="info-panel" style="margin-bottom: 0;">
+    <h4><a href="{{ '/problema/' | relative_url }}">O Problema</a></h4>
+    <p style="font-size: 0.9rem;">Entenda como os sinais vazam pelo ar e conheça a análise de plantas reais de seções eleitorais.</p>
+  </div>
+
+  <div class="info-panel" style="margin-bottom: 0;">
+    <h4><a href="{{ '/sdr/' | relative_url }}">Rádios SDR</a></h4>
+    <p style="font-size: 0.9rem;">Veja como funcionam os rádios autônomos e de bancada utilizados nos ensaios técnicos.</p>
+  </div>
+
+  <div class="info-panel" style="margin-bottom: 0;">
+    <h4><a href="{{ '/sobre/' | relative_url }}">Sobre a Pesquisa</a></h4>
+    <p style="font-size: 0.9rem;">Conheça a equipe de professores e estudantes da UTFPR e UFG e os objetivos junto ao TPS do TSE.</p>
+  </div>
+
+  <div class="info-panel" style="margin-bottom: 0;">
+    <h4><a href="{{ '/referencias/' | relative_url }}">Referências</a></h4>
+    <p style="font-size: 0.9rem;">Acesse o catálogo completo de artigos científicos, jurisprudências e normas técnicas.</p>
+  </div>
+</div>

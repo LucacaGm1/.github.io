@@ -4,101 +4,93 @@ title: "Dispositivos de Captura: Rádios SDR"
 permalink: /sdr/
 ---
 
-<div class="paper-masthead">
-  <div class="paper-context">Engenharia de Rádio // Equipamentos e Demodulação</div>
-  <h1 class="paper-title">Arquitetura dos Receptores de Rádio Definido por Software (SDR)</h1>
-  <div class="paper-meta">
-    Investigação dos dispositivos de recepção de RF e ferramentas computacionais aplicadas à espionagem de sinais de vídeo <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+<div class="civic-banner">
+  <div class="civic-tag">Engenharia e Equipamentos // Rádios SDR</div>
+  <h1 class="civic-title">Os Dispositivos Usados na Interceptação de Sinais</h1>
+  <div class="civic-meta">
+    Entenda como funcionam os Rádios Definidos por Software e as diferenças entre modelos portáteis e de bancada <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
   </div>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 30px; margin-bottom: 16px;">
-  <span class="section-num">§ 1.</span> O Papel do SDR na Cadeia de Interceptação
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 30px; margin-bottom: 14px;">O Que É um Rádio SDR?</h2>
 
 <p>
-  Em contraste com receptores de rádio convencionais que possuem circuitos integrados rígidos projetados exclusivamente para áudio analógico, os <strong>Rádios Definidos por Software (SDR)</strong> utilizam conversores analógico-digitais (ADC) de alta velocidade acoplados a matrizes de portas lógicas programáveis (FPGA) e barramentos de dados rápidos. O processamento de sinal &mdash; filtragem de canal, sincronismo de quadros e demodulação &mdash; é inteiramente delegado a software executado em tempo real ou processado offline <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+  Um rádio comum de carro ou de casa só consegue sintonizar estações de som analógicas previamente programadas. Já um <strong>Rádio Definido por Software (SDR)</strong> é um equipamento versátil que usa programas de computador para receber e processar praticamente qualquer faixa de frequência de ondas de rádio <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
 </p>
 
 <p>
-  Nos ensaios realizados pela equipe da UTFPR, as ferramentas open-source baseadas no ecossistema <strong>GNU Radio</strong> e no módulo <code>gr-tempest</code> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a> viabilizam a detecção cega das frequências de clock e taxa de quadros <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>, reconstruindo a matriz de pixels a partir de amostras de radiofrequência brutas (I/Q).
+  Com ferramentas livres como o <strong>GNU Radio</strong> e o módulo <code>gr-tempest</code> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>, os sinais capturados pela antena são decodificados em tempo real para transformar ondas eletromagnéticas em imagens de tela <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>.
 </p>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 2.</span> Análise das Arquiteturas Estudadas
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Os Modelos Analisados na Pesquisa</h2>
 
-<div class="tech-block">
-  <div class="tech-block-title">Plataforma Autônoma Portátil // Classe de Risco Furtivo</div>
-  <h4>Ettus USRP E312 / Série USRP E3xx</h4>
+<div class="info-panel" style="border-left: 4px solid #b91c1c;">
+  <div style="font-size: 0.8rem; font-weight: 700; color: #b91c1c; text-transform: uppercase; margin-bottom: 6px;">Maior Risco de Discrição // Autônomo</div>
+  <h4>Ettus USRP E312 (Portátil a Bateria)</h4>
   <p style="font-size: 0.95rem; margin-bottom: 8px;">
-    Esta família de SDRs representa o vetor mais crítico para o Cenário 2 (agente interno) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>. O dispositivo integra um circuito System-on-Chip (SoC) com núcleos de processamento ARM rodando Linux embarcado, dispensando computador externo.
+    Este modelo é o mais preocupante para o ambiente de votação (Cenário 2) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>. Ele possui um computador embutido rodando Linux e funciona totalmente a bateria, sem precisar de tomadas ou fios externos.
   </p>
   <p style="font-size: 0.95rem; margin-bottom: 0;">
-    Alimentado por bateria interna de íons de lítio e pesando menos de 500 gramas em chassi metálico selado sem telas ou botões, pode ser facilmente transportado no bolso ou mochila por mesários e fiscais, gravando o espectro de radiofrequência silenciosamente durante o horário de votação para posterior extração dos votos digitados.
+    Como é uma caixa de metal discreta que cabe facilmente no bolso ou em uma mochila, ele poderia ser operado silenciosamente para gravar os dados de radiofrequência e analisá-los depois.
   </p>
 </div>
 
-<div class="tech-block">
-  <div class="tech-block-title">Plataforma de Bancada // Referência Experimental</div>
-  <h4>Ettus USRP B200</h4>
+<div class="info-panel" style="border-left: 4px solid var(--color-primary);">
+  <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-primary); text-transform: uppercase; margin-bottom: 6px;">Modelo de Laboratório // Conectado a Computador</div>
+  <h4>Ettus USRP B200 (Bancada)</h4>
   <p style="font-size: 0.95rem; margin-bottom: 8px;">
-    O USRP B200 é a plataforma flexível adotada na bancada experimental da UTFPR <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>. O equipamento faz o front-end de radiofrequência (sintonizando faixas de 70 MHz a 6 GHz) e transmite as amostras brutas via interface USB 3.0 para processamento imediato em computador de alto desempenho.
+    É o equipamento de referência utilizado pela equipe da UTFPR nos ensaios práticos <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>.
   </p>
   <p style="font-size: 0.95rem; margin-bottom: 0;">
-    Embora dependente de um computador host externo, sua alta taxa de transferência (até 56 MHz de largura de banda instantânea) torna-o o equipamento ideal para testes de caracterização espectral e avaliação da eficácia da contramedida de ruído.
+    Ele precisa estar conectado a um computador potente por cabo USB 3.0 para processar as imagens. Por ser mais volumoso e depender de notebook, é típico para ataques montados em salas vizinhas ou veículos próximos (Cenário 1) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
   </p>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 3.</span> Especificações Técnicas Comparadas
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Comparativo de Características</h2>
 
 <table>
   <thead>
     <tr>
-      <th>Parâmetro</th>
-      <th>Ettus USRP E312 (Portátil)</th>
-      <th>Ettus USRP B200 (Bancada)</th>
+      <th>Característica</th>
+      <th>USRP E312 (Portátil)</th>
+      <th>USRP B200 (Bancada)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Fonte de Alimentação</strong></td>
-      <td>Bateria interna recarregável</td>
-      <td>Barramento USB 3.0 ou fonte externa</td>
+      <td><strong>Alimentação</strong></td>
+      <td>Bateria interna própria</td>
+      <td>Cabo USB ou fonte externa</td>
     </tr>
     <tr>
-      <td><strong>Capacidade de Processamento</strong></td>
-      <td>Dual-core ARM Cortex-A9 + Xilinx Zynq FPGA</td>
-      <td>Spartan-6 FPGA (requer PC host)</td>
+      <td><strong>Processamento</strong></td>
+      <td>Processador e memória internos</td>
+      <td>Depende de computador conectado</td>
     </tr>
     <tr>
-      <td><strong>Armazenamento de Amostras</strong></td>
-      <td>Cartão MicroSD / eMMC integrado (autônomo)</td>
-      <td>Armazenamento em disco do computador host</td>
+      <td><strong>Armazenamento</strong></td>
+      <td>Cartão de memória integrado</td>
+      <td>Disco rígido do computador</td>
     </tr>
     <tr>
-      <td><strong>Faixa de Cobertura de RF</strong></td>
-      <td>70 MHz a 6,0 GHz</td>
-      <td>70 MHz a 6,0 GHz</td>
+      <td><strong>Faixa de Cobertura</strong></td>
+      <td>70 MHz a 6 GHz</td>
+      <td>70 MHz a 6 GHz</td>
     </tr>
     <tr>
-      <td><strong>Associação a Cenários</strong></td>
-      <td>Cenário 2 (Operador infiltrado / &lt; 0,5 m)</td>
-      <td>Cenário 1 (Sala adjacente com veículo / &asymp; 1,0 m)</td>
+      <td><strong>Cenário Típico</strong></td>
+      <td>Cenário 2 (Operador próximo / &lt;0,5m)</td>
+      <td>Cenário 1 (Sala vizinha / ~1,0m)</td>
     </tr>
   </tbody>
 </table>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 4.</span> Precedentes e Jurisprudência Eleitoral
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Precedentes e Casos Reais na Justiça Eleitoral</h2>
 
 <p>
-  A possibilidade de utilização de dispositivos eletrônicos compactos em seções eleitorais não é uma hipótese teórica abstrata. A jurisprudência eleitoral brasileira já registra cassações concretas motivadas pelo porte não autorizado de tecnologias de vigilância em cabines de votação, com destaque para o acórdão do TRE-PA no <strong>Recurso Eleitoral nº 0600629-58.2024.6.14.0074</strong> (município de Ourilândia do Norte, PA) <a href="{{ '/referencias/#ref-15' | relative_url }}" class="cite-ref">[15]</a>, no qual eleitores foram cooptados mediante entrega de óculos equipados com microcâmeras embutidas para comprovação do voto.
+  O risco de uso de equipamentos eletrônicos para burlar o sigilo do voto é uma preocupação real para os tribunais. No Pará, o TRE-PA cassou o mandato de um vereador no município de Ourilândia do Norte após ser comprovado o uso de armações de óculos com microcâmeras para fiscalizar o voto de eleitores <a href="{{ '/referencias/#ref-15' | relative_url }}" class="cite-ref">[15]</a>.
 </p>
 
 <p>
-  Enquanto a vigilância óptica depende de lentes visíveis e linha de visada desobstruída para o painel da urna (podendo ser coibida por inspeção visual), os receptores SDR interceptam ondas de radiofrequência passivas capazes de atravessar biombos, carteiras e alvenarias, reforçando a necessidade impreterível de <strong>contramedidas ativas baseadas em ruído eletromagnético</strong> <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+  Diferente de câmeras &mdash; que exigem lente apontada diretamente para a tela e podem ser notadas &mdash;, o rádio SDR capta ondas invisíveis que atravessam paredes. Por isso, medidas como o <strong>ruído protetor nos monitores da seção</strong> são indispensáveis para garantir a tranquilidade do eleitor <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
 </p>

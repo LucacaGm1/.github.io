@@ -4,64 +4,51 @@ title: "Sobre a Pesquisa e Equipe"
 permalink: /sobre/
 ---
 
-<div class="paper-masthead">
-  <div class="paper-context">Projeto de Extensão &bull; Engenharia e Democracia</div>
-  <h1 class="paper-title">Segurança Física, Auditoria Aberta e Cidadania Eleitoral</h1>
-  <div class="paper-meta">
-    Iniciativa acadêmica de extensão universitária voltada à defesa da integridade do processo eleitoral brasileiro <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+<div class="civic-banner">
+  <div class="civic-tag">Extensão Universitária &bull; Ciência e Democracia</div>
+  <h1 class="civic-title">Proteção Tecnológica para o Sigilo do Voto</h1>
+  <div class="civic-meta">
+    Conheça a equipe de professores e estudantes da UTFPR Ponta Grossa e UFG dedicados à segurança eletromagnética das eleições <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
   </div>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 30px; margin-bottom: 16px;">
-  <span class="section-num">§ 1.</span> Motivação e Marco Legal
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 30px; margin-bottom: 14px;">Origem e Motivação</h2>
 
 <p>
-  O sigilo do sufrágio é direito fundamental inegociável, previsto expressamente no artigo 14 da Constituição da República Federativa do Brasil de 1988. Diante da rápida proliferação de plataformas de radiofrequência de baixo custo no mercado global, o escopo da segurança física eleitoral transcendeu a mera fiscalização presencial de urnas lacradas, demandando salvaguardas técnicas avançadas contra vetores de interceptação invisíveis <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>.
+  O sigilo do voto é uma garantia fundamental protegida pela Constituição Brasileira. Com o avanço rápido e a redução dos preços de componentes de rádio e computação, a segurança física das seções de votação precisa acompanhar novas formas invisíveis de espionagem <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>.
 </p>
 
 <p>
-  A investigação é motivada por incidentes reais apurados pelas cortes eleitorais do país &mdash; a exemplo das investigações de cooptação em Ourilândia do Norte (PA) julgadas pelo TRE-PA <a href="{{ '/referencias/#ref-15' | relative_url }}" class="cite-ref">[15]</a> &mdash;, demonstrando que mecanismos clandestinos de comprovação de voto continuam sendo buscados por agentes ilícitos para fraudar o princípio democrático.
+  Casos apurados pela Justiça Eleitoral &mdash; como a cassação de mandato por compra de voto com óculos de filmagem em Ourilândia do Norte (PA) <a href="{{ '/referencias/#ref-15' | relative_url }}" class="cite-ref">[15]</a> &mdash; comprovam que a proteção do eleitor dentro da cabine precisa ser constantemente aperfeiçoada com ciência e tecnologia aberta.
 </p>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 2.</span> Vinculação Institucional e Equipe
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Equipe e Parcerias Acadêmicas</h2>
 
-<p>
-  O projeto congrega docentes, discentes e pesquisadores de centros de referência em processamento de sinais, inteligência artificial e telecomunicações:
-</p>
-
-<div class="tech-block">
-  <div class="tech-block-title">Coordenação Geral</div>
-  <h4>Prof. Dr. Saulo Queiroz</h4>
+<div class="info-panel">
+  <h4>Coordenação Geral do Projeto</h4>
   <p style="font-size: 0.95rem; margin-bottom: 0;">
-    Docente e pesquisador do Departamento Acadêmico de Informática (DAINF) da <strong>Universidade Tecnológica Federal do Paraná (UTFPR) &ndash; Câmpus Ponta Grossa</strong> <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-4' | relative_url }}" class="cite-ref">[4]</a>.
+    <strong>Prof. Dr. Saulo Queiroz</strong> &ndash; Docente e pesquisador do Departamento Acadêmico de Informática (DAINF) da <strong>Universidade Tecnológica Federal do Paraná (UTFPR) &ndash; Câmpus Ponta Grossa</strong> <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-4' | relative_url }}" class="cite-ref">[4]</a>.
   </p>
 </div>
 
-<div class="tech-block">
-  <div class="tech-block-title">Grupo de Pesquisadores Autores</div>
-  <h4>Corpo Técnico UTFPR</h4>
+<div class="info-panel">
+  <h4>Pesquisadores e Autores</h4>
   <p style="font-size: 0.95rem; margin-bottom: 0;">
-    Lucas Lima Aleixo de Barros, Leonardo Teodoro, Pedro Tomaz, Alyson Isaluski e Leandro Hyeda &ndash; Bacharelado em Ciência da Computação (UTFPR Ponta Grossa) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>.
+    Lucas Lima Aleixo de Barros, Leonardo Teodoro, Pedro Tomaz, Alyson Isaluski e Leandro Hyeda &ndash; Estudantes de Bacharelado em Ciência da Computação da UTFPR Ponta Grossa <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>.
   </p>
 </div>
 
-<div class="tech-block">
-  <div class="tech-block-title">Cooperação Institucional Interuniversitária</div>
-  <h4>Prof. Dr. Antônio Carlos de Oliveira Júnior</h4>
+<div class="info-panel">
+  <h4>Cooperação Interinstitucional</h4>
   <p style="font-size: 0.95rem; margin-bottom: 0;">
-    Universidade Federal de Goiás (UFG) &bull; Centro de Competência EMBRAPII em Tecnologias Imersivas (CEIA/AKCIT) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>.
+    <strong>Prof. Dr. Antônio Carlos de Oliveira Júnior</strong> &ndash; Universidade Federal de Goiás (UFG) e Centro de Competência EMBRAPII em Tecnologias Imersivas (CEIA/AKCIT) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-3' | relative_url }}" class="cite-ref">[3]</a>.
   </p>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 3.</span> Metas Acadêmicas e Contribuição Pública
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Objetivos e Metas para a Sociedade</h2>
 
 <ul style="line-height: 1.8;">
-  <li><strong>Rigor Experimental:</strong> Desenvolver modelagens computacionais e ensaios empíricos que caracterizem a assinatura espectral das urnas eletrônicas e a resposta do ruído sob diferentes materiais isolantes <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-7' | relative_url }}" class="cite-ref">[7]</a>.</li>
-  <li><strong>Participação no TPS do TSE:</strong> Submeter os dados e os protótipos de blindagem por ruído às chamadas oficiais do <strong>Teste Público de Segurança (TPS)</strong> organizado pelo Tribunal Superior Eleitoral <a href="{{ '/referencias/#ref-17' | relative_url }}" class="cite-ref">[17]</a>.</li>
-  <li><strong>Guias de Diretrizes para Seções:</strong> Formular manuais e recomendações de baixo custo de disposição física para os Tribunais Regionais Eleitorais (TREs), resguardando o direito ao sigilo de aproximadamente 155 milhões de eleitores brasileiros <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-17' | relative_url }}" class="cite-ref">[17]</a>.</li>
+  <li><strong>Testes Práticos em Laboratório:</strong> Medir cientificamente o alcance dos sinais e o nível de atenuação através de paredes, portas e biombos <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-7' | relative_url }}" class="cite-ref">[7]</a>.</li>
+  <li><strong>Colaboração com o TSE:</strong> Submeter as descobertas e a solução de ruído às edições do <strong>Teste Público de Segurança (TPS)</strong> organizado pelo Tribunal Superior Eleitoral <a href="{{ '/referencias/#ref-17' | relative_url }}" class="cite-ref">[17]</a>.</li>
+  <li><strong>Guia Prático para os Tribunais Regionais:</strong> Criar recomendações simples e acessíveis para ajudar os TREs a posicionar biombos e telas de forma segura nas escolas de votação <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.</li>
 </ul>

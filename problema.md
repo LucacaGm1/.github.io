@@ -4,86 +4,76 @@ title: "O Problema: Ataques TEMPEST"
 permalink: /problema/
 ---
 
-<div class="paper-masthead">
-  <div class="paper-context">Fundamentação Técnica // Vetores de Ataque</div>
-  <h1 class="paper-title">Canais Laterais Eletromagnéticos em Interfaces Gráficas de Votação</h1>
-  <div class="paper-meta">
-    Análise física dos vetores de radiação não intencional e vulnerabilidades topológicas em locais de votação <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>.
+<div class="civic-banner">
+  <div class="civic-tag">Vulnerabilidade Física // Espionagem por Ondas de Rádio</div>
+  <h1 class="civic-title">Como as Emanações Eletromagnéticas Afetam as Telas de Votação</h1>
+  <div class="civic-meta">
+    Compreenda o fenômeno físico dos canais laterais (TEMPEST) e a disposição espacial de locais de votação <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>.
   </div>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 30px; margin-bottom: 16px;">
-  <span class="section-num">§ 1.</span> O Fenômeno Físico da Radiação TEMPEST
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 30px; margin-bottom: 14px;">O Que São os Ataques TEMPEST?</h2>
 
 <p>
-  Telas digitais e circuitos integrados gráficos operam com variações de corrente de alta frequência reguladas por sinais de sincronismo estritos (padrões VESA DMT) <a href="{{ '/referencias/#ref-16' | relative_url }}" class="cite-ref">[16]</a>. As linhas de transmissão condutoras &mdash; como cabos de conexão interna e pistas de circuitos impressos &mdash; atuam como antenas não intencionais, emitindo ondas eletromagnéticas proporcionais à intensidade e aos pulsos do sinal gráfico exibido <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a> <a href="{{ '/referencias/#ref-7' | relative_url }}" class="cite-ref">[7]</a>.
+  Toda tela eletrônica gera sinais elétricos pulsantes para atualizar imagens dezenas de vezes por segundo, seguindo padrões de temporização de vídeo (como as normas VESA) <a href="{{ '/referencias/#ref-16' | relative_url }}" class="cite-ref">[16]</a>. Esses pulsos elétricos produzem ondas de rádio involuntárias que vazam através de cabos e conectores <a href="{{ '/referencias/#ref-5' | relative_url }}" class="cite-ref">[5]</a>.
 </p>
 
 <p>
-  Com o emprego de Rádios Definidos por Software (SDR) e algoritmos de processamento digital, adversários posicionados fora do campo visual do eleitor conseguem sintonizar essas emanações harmônicas e sincronizar linhas e quadros para reconstruir em tempo real a imagem renderizada na tela da cabine de votação <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
+  Com um receptor de Rádio Definido por Software (SDR) e programas de processamento de sinais, uma pessoa mal-intencionada pode sintonizar essas ondas de rádio e reconstituir a imagem da tela sem tocar na urna ou violar qualquer lacre físico <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-6' | relative_url }}" class="cite-ref">[6]</a>.
 </p>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 2.</span> Cenários de Ameaça Mapeados pela Pesquisa
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Cenários de Risco Avaliados pelo Grupo</h2>
 
 <p>
-  O estudo da UTFPR Ponta Grossa em conjunto com a UFG estruturou dois cenários críticos onde o sigilo do voto pode ser comprometido <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>:
+  A pesquisa da UTFPR Ponta Grossa mapeou duas situações em que esse ataque pode ocorrer na prática <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>:
 </p>
 
-<div class="tech-block">
-  <div class="tech-block-title">Cenário 1 // Distância &asymp; 1,0 Metro (Através de Divisórias)</div>
-  <h4>Captação em Ambiente Adjacente sem Contato Visual</h4>
+<div class="info-panel" style="border-left: 4px solid var(--color-primary);">
+  <h4>Cenário 1: Através de Parede de Alvenaria (~1,0 metro)</h4>
   <p style="font-size: 0.95rem; margin-bottom: 0;">
-    Em escolas e colégios eleitorais, cabines de votação costumam ser encostadas nas paredes que dividem salas de aula ou dão para corredores e áreas externas. O atacante posiciona uma antena de recepção na sala vizinha. As paredes comuns de alvenaria ou gesso acartonado (drywall) atenuam pouco as frequências harmônicas de interesse, permitindo a extração do sinal residual sem presença física na seção <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a>.
+    Em escolas e prédios públicos, é muito comum que as cabines fiquem encostadas nas paredes que dividem salas vizinhas ou corredores. O receptor pode ser posicionado discretamente na sala contígua, captando os sinais que atravessam tijolos ou drywall sem que ninguém na seção perceba <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a> <a href="{{ '/referencias/#ref-2' | relative_url }}" class="cite-ref">[2]</a>.
   </p>
 </div>
 
-<div class="tech-block">
-  <div class="tech-block-title">Cenário 2 // Distância &lt; 0,5 Metro (Proximidade Extrema / Agente Infiltrado)</div>
-  <h4>Superação da Blindagem Passiva por Dispositivo Oculto</h4>
+<div class="info-panel" style="border-left: 4px solid var(--color-utfpr);">
+  <h4>Cenário 2: Agente Próximo à Cabine (&lt; 0,5 metro)</h4>
   <p style="font-size: 0.95rem; margin-bottom: 0;">
-    As especificações de segurança dos modelos mais recentes de urnas (UE2020 e UE2022) incluem blindagens que reduzem expressivamente as emissões a partir de meio metro de distância <a href="{{ '/referencias/#ref-13' | relative_url }}" class="cite-ref">[13]</a>. Contudo, um agente interno cooptado &mdash; como mesário, fiscal de partido ou técnico credenciado portando um SDR miniatura a bateria &mdash; pode operar a menos de 50 centímetros da urna, superando o limiar de proteção da carcaça <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+    As urnas brasileiras mais novas (UE2020 e UE2022) possuem blindagem que reduz bastante as emissões a mais de 0,5 metro de distância <a href="{{ '/referencias/#ref-13' | relative_url }}" class="cite-ref">[13]</a>. Porém, se alguém com livre circulação na sala &mdash; como um mesário ou fiscal &mdash; portar um receptor miniatura oculto a menos de meio metro da urna, essa proteção física pode ser superada <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
   </p>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 3.</span> Contexto Físico Real de Seções Eleitorais
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">A Disposição Real das Seções Eleitorais</h2>
 
 <p>
-  A viabilidade de ambos os cenários foi verificada a partir de levantamentos empíricos de plantas e disposições de salas em zonas eleitorais de Ponta Grossa (PR):
+  O grupo de pesquisa visitou e mapeou seções eleitorais reais em Ponta Grossa (PR), comprovando que a disposição de carteiras e biombos frequentemente coloca a urna a distâncias vulneráveis:
 </p>
 
-<div class="scientific-figure">
-  <img src="{{ '/assets/images/exemplode_secao_eleitoral_adjacente_a_rua.png' | relative_url }}" alt="Planta esquemática de seção eleitoral">
-  <div class="figure-meta">
-    <strong>Figura 2.</strong> Disposição espacial real observada na Seção Eleitoral nº 47 em Ponta Grossa (PR) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>. Note-se a contiguidade física imediata entre a urna eletrônica, a parede de divisa e a circulação externa, viabilizando o Cenário 1 sem interferência na dinâmica dos mesários.
+<div class="figure-frame">
+  <img src="{{ '/assets/images/exemplode_secao_eleitoral_adjacente_a_rua.png' | relative_url }}" alt="Planta da Seção Eleitoral nº 47 de Ponta Grossa">
+  <div class="figure-legend">
+    <strong>Figura 2.</strong> Planta da Seção Eleitoral nº 47 de Ponta Grossa (PR) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>. Observa-se a cabine de votação posicionada diretamente contra a parede vizinha, facilitando a recepção de sinais a partir da sala contígua ou da via pública.
   </div>
 </div>
 
-<h2 style="font-size: 1.45rem; margin-top: 36px; margin-bottom: 16px;">
-  <span class="section-num">§ 4.</span> Comparação Espectral da Reconstrução
-</h2>
+<h2 style="font-size: 1.4rem; margin-top: 36px; margin-bottom: 14px;">Comparação das Imagens Reconstituídas</h2>
 
 <p>
-  Abaixo confrontam-se as amostras capturadas e demoduladas experimentalmente a 1,0 m e 0,5 m da urna eletrônica sob as mesmas condições de teste de bancada:
+  Abaixo estão as capturas obtidas no laboratório durante os testes de bancada, demonstrando como a distância afeta a nitidez do sinal captado:
 </p>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 20px 0;">
   
-  <div class="scientific-figure" style="margin: 0;">
-    <img src="{{ '/assets/images/1mdaurna.png' | relative_url }}" alt="Captação a 1 metro">
-    <div class="figure-meta">
-      <strong>Figura 3A.</strong> Captação a 1,0 m de distância (Cenário 1). O contraste visual revela a estrutura e os botões da tela <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+  <div class="figure-frame" style="margin: 0;">
+    <img src="{{ '/assets/images/1mdaurna.png' | relative_url }}" alt="Reconstrução a 1 metro da urna">
+    <div class="figure-legend">
+      <strong>Figura 3A.</strong> Captação a 1,0 metro de distância (Cenário 1). Os contornos e botões da tela de votação ainda são perceptíveis através do rádio <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
     </div>
   </div>
 
-  <div class="scientific-figure" style="margin: 0;">
-    <img src="{{ '/assets/images/0,5mdaurna.png' | relative_url }}" alt="Captação a 0,5 metro">
-    <div class="figure-meta">
-      <strong>Figura 3B.</strong> Captação a 0,5 m de distância (Cenário 2). Nitidez gráfica acentuada devido à alta relação sinal-ruído (SNR) <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
+  <div class="figure-frame" style="margin: 0;">
+    <img src="{{ '/assets/images/0,5mdaurna.png' | relative_url }}" alt="Reconstrução a 0,5 metro da urna">
+    <div class="figure-legend">
+      <strong>Figura 3B.</strong> Captação a 0,5 metro de distância (Cenário 2). Maior nitidez gráfica proporcionada pela extrema proximidade com o cabo de vídeo da urna <a href="{{ '/referencias/#ref-1' | relative_url }}" class="cite-ref">[1]</a>.
     </div>
   </div>
 
